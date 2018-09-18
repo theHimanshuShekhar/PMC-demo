@@ -1,14 +1,20 @@
+// Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Third party
+
+// Components
 import { AppComponent } from './app.component';
+import { HoardingBookingComponent } from './components/hoarding-booking/hoarding-booking.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HoardingBookingComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
