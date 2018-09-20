@@ -1,9 +1,20 @@
 #map-container {
     height: 600px;
 }
-.hoarding-list {
-    height: 80%;
+.hoarding-list{
+    height: 75%;
 }
 .booking-section {
-    height: 20%;
+    height: 25%;
+}
+.map {
+    height: 100%;
+    width: 100%;
+}
+.row {
+    border-radius: 20px;
+    overflow: hidden;
+}
+.leaflet-popup {
+    transform: translateY(10px);
 }

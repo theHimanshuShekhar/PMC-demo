@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-.body {
+@import "~leaflet/dist/leaflet.css";
+body {
     margin: 0;
     padding: 0;
+    background-color: #63B2F5;
 }
 .test {
     border: 1px solid red;

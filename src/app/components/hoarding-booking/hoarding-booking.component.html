@@ -1,11 +1,20 @@
-<div class="container mt-5">
+<div class="container my-5">
   <div class="row">
-    <div id="map-container" class="col-8 p-0 test">
-        
+    <div id="map-container" class="col-12 col-md-8 p-0">
+        <div class="map"
+          leaflet 
+          [leafletOptions]="options">
+          <div *ngFor="let marker of markers">
+            <div [leafletLayer]="marker" (click)="handleEvent('test')"></div>
+          </div>
+      </div>
     </div>
-    <div id="booking-container" class="col-4 p-0 test">
-      <div class="hoarding-list test"></div>
-      <div class="booking-section test"></div>
+    <div id="booking-container" class="col-12 col-md-4 p-0 bg-secondary text-center">
+      <div class="hoarding-list text-white px-5 p-3">
+        <h2>List of hoardings</h2>
+        <p>Shows list of hoarding and displays carousel of image and availability info if one is selected either by clicking on the list or on the map marker</p>
+      </div>
+      <div class="booking-section bg-light py-3 px-5"><h2>Booking Button</h2><p>Button opens modal</p></div>
     </div>
   </div>
 </div>
