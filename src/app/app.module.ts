@@ -1,6 +1,8 @@
 // Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 // Third party
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
@@ -16,6 +18,7 @@ import { HoardingBookingComponent } from './components/hoarding-booking/hoarding
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     LeafletModule.forRoot()
   ],
   providers: [],

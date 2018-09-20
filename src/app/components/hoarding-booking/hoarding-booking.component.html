@@ -1,20 +1,44 @@
 <div class="container my-5">
-  <div class="row">
+  <div class="row justify-content-center" id="box">
     <div id="map-container" class="col-12 col-md-8 p-0">
         <div class="map"
           leaflet 
           [leafletOptions]="options">
           <div *ngFor="let marker of markers">
-            <div [leafletLayer]="marker" (click)="handleEvent('test')"></div>
+            <div [leafletLayer]="marker"></div>
           </div>
       </div>
     </div>
     <div id="booking-container" class="col-12 col-md-4 p-0 bg-secondary text-center">
-      <div class="hoarding-list text-white px-5 p-3">
+      <div *ngIf="!showInfo" class="hoarding-list text-white px-5 p-3" [@enterAnimation]>
         <h2>List of hoardings</h2>
-        <p>Shows list of hoarding and displays carousel of image and availability info if one is selected either by clicking on the list or on the map marker</p>
+        <p>List and markers are dynamically rendered based on number of locations ie if new locations are added or loaded from database new markes and listitems will be created</p>
+        <p>Displays image and availability info if one is selected either by clicking on the list or on the map marker (marker click not implemented)</p>
+        <div class="py-3 bg-light text-dark border list-item" *ngFor='let location of locations' (click)="toggleShowInfo(location)">
+          <div>
+            <h5>{{location.name}}</h5>
+          </div>
+        </div>
       </div>
-      <div class="booking-section bg-light py-3 px-5"><h2>Booking Button</h2><p>Button opens modal</p></div>
+      <div *ngIf="showInfo && selected" class="hoarding-info" [@enterAnimation]>
+        <h1>{{selected}}</h1>
+        <div id="info-image"></div>
+        <div class="info my-4">
+          <p>Information about price and current status</p>
+        </div>
+        <div class="btn btn-danger px-5 py-2 mb-3" (click)="clickBooking()">Book</div><br>
+        <div class="btn btn-secondary" (click)="toggleShowInfo()">Back</div>
+      </div>
     </div>
+    <div id="add-marker" class="row col-12 px-3 py-2 justify-content-center bg-info text-center text-white">
+        <span class="mx-2 my-1 col-12"><input #nameField type="text" placeholder="Name" value=""></span>
+        <span class="mx-2 my-1 col-12"><input #latField type="text" placeholder="Latitude" value=""></span>
+        <span class="mx-2 my-1 col-12"><input #longField type="text" placeholder="Longitude" value=""></span>
+        <div class="col-12">
+          <div class="btn btn-primary my-2 mx-3 px-3" (click)="addMarker({name: nameField.value, lat: latField.value, long: longField.value})">Add Marker</div>
+        </div>
+        <p>try lat: 18.9694 long: 73.1075</p>
+      </div>
   </div>
+  
 </div>
