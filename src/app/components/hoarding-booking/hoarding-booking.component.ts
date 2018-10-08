@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { latLng, marker, tileLayer, latLngBounds, icon, LatLngExpression, Point } from 'leaflet';
-import {trigger, transition, style, animate, state} from '@angular/animations';
+import { trigger, transition, style, animate, state } from '@angular/animations';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-hoarding-booking',
@@ -8,8 +9,16 @@ import {trigger, transition, style, animate, state} from '@angular/animations';
     trigger(
       'enterAnimation', [
         transition(':enter', [
-          style({ transform: 'translateX(50%)', opacity: 0}),
-          animate('200ms', style({ transform: 'translateX(0%)', opacity: 1}))
+          style({ transform: 'translateX(50%)', opacity: 0 }),
+          animate('200ms', style({ transform: 'translateX(0%)', opacity: 1 }))
+        ])
+      ]
+    ),
+    trigger(
+      'popIn', [
+        transition(':enter', [
+          style({ opacity: 0, transform: 'scale(0.9)' }),
+          animate('200ms ease-in', style({ opacity: 1, transform: 'scale(1)' }))
         ])
       ]
     )
@@ -19,21 +28,7 @@ import {trigger, transition, style, animate, state} from '@angular/animations';
 })
 export class HoardingBookingComponent implements OnInit {
   selected;
-  locations = [
-    {
-      name: 'marker location 1',
-      coords: [ 18.9894, 73.1175 ]
-    },
-    {
-      name: 'marker location 2',
-      coords  : [ 18.9794, 73.1275 ]
-    },
-    {
-      name: 'marker location 3',
-      coords  : [ 18.9994, 73.1375 ]
-    },
-  ];
-
+  locations;
   markers = [];
 
   showInfo;
@@ -48,58 +43,51 @@ export class HoardingBookingComponent implements OnInit {
     zoom: 13,
     center: latLng(18.9894, 73.1175)
   };
+
+  constructor(
+    private dataService: DataService
+  ) { }
+
   ngOnInit() {
-    this.setMarkers();
+    this.dataService.getLocations().subscribe(locations => {
+      if (locations.length > 0) {
+        this.locations = locations;
+        this.setMarkers();
+      }
+    });
     this.showInfo = false;
   }
 
   setMarkers() {
-    const self = this;
-    for (let i = 0; i < this.locations.length; i++) {
-      this.markers.push(marker(this.getCoords(this.locations[i].coords), {
+    this.markers = [];
+    this.locations.forEach(location => {
+      this.markers.push(marker(this.getCoords(location.latlong), {
         riseOnHover: true,
         riseOffset: 250,
         icon: icon({
-            iconSize: [ 25, 41 ],
-            iconAnchor: [ 13, 41 ],
-            iconUrl: 'assets/marker-icon.png',
-            shadowUrl: 'assets/marker-shadow.png'
+          iconSize: [25, 41],
+          iconAnchor: [13, 41],
+          iconUrl: 'assets/marker-icon.png',
+          shadowUrl: 'assets/marker-shadow.png'
         })
-      }).bindPopup(this.locations[i].name, {offset: new Point(0, -20)})
-      .on('click', this.handleEvent.bind(self))
+      }).bindPopup(location.name, { offset: new Point(0, -20) })
+        .on('click', this.handleEvent)
       );
-    }
+    });
   }
 
   getCoords(coords): LatLngExpression {
-    return coords;
+    return [coords._lat, coords._long];
   }
 
   handleEvent() {
     console.log('handle marker click event');
-    this.toggleShowInfo();
-  }
-
-  clickBooking() {
-    alert('Open Booking modal or redirect to booking/payment page');
   }
 
   toggleShowInfo(location?) {
     if (location) {
-      this.selected = location.name;
+      this.selected = location;
     }
     this.showInfo = !this.showInfo;
-  }
-
-  addMarker(input) {
-    if (input.name && input.lat && input.long) {
-      this.locations.push({
-        name: input.name,
-        coords: [input.lat, input.long]
-      });
-      this.setMarkers();
-    } else {
-      alert('fill all fields');
-    }
   }
 }

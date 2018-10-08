@@ -1,16 +1,17 @@
-<div class="container my-lg-5" [@fadeIn]>
+<div class="container my-lg-3" [@popIn]>
   <div class="row justify-content-center" id="box">
     <div id="map-container" class="col-12 col-lg-8 p-0">
       <div class="map" leaflet [leafletOptions]="options">
-        <div *ngFor="let marker of markers">
+        <div *ngFor="let marker of markers" [@popIn]>
           <div [leafletLayer]="marker"></div>
         </div>
       </div>
     </div>
     <div id="booking-container" class="col-12 col-lg-4 p-0 bg-secondary text-center">
       <div *ngIf="!showInfo" class="hoarding-list text-white py-3 px-0" [@enterAnimation]>
-        <h2>List of Locations</h2>
-        <div class="py-3 bg-light text-dark border list-item" *ngFor='let location of locations' (click)="toggleShowInfo(location)">
+        <h2 class="mb-3">Locations</h2>
+        <div class="py-3 bg-light text-dark border list-item" *ngFor='let location of locations' (click)="toggleShowInfo(location)"
+          [@popIn]>
           <div>
             <h5>{{location.name}}</h5>
           </div>
