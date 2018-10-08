@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { latLng, marker, tileLayer, latLngBounds, icon, LatLngExpression, Point } from 'leaflet';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { DataService } from '../../services/data.service';
-import { ToggleService } from '../../services/toggle.service';
 
 @Component({
   selector: 'app-hoarding-booking',
@@ -90,9 +89,11 @@ export class HoardingBookingComponent implements OnInit {
     this.dataService.getLocationByName(name).subscribe(locations => this.toggleShowInfo(locations[0]));
   }
   mouseout() {
+    // @ts-ignore
     this.closePopup();
   }
   mouseover() {
+    // @ts-ignore
     this.openPopup();
   }
 
