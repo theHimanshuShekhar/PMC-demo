@@ -1,45 +1,61 @@
 #map-container {
-    height: 600px;
+  height: 600px;
 }
+
 .booking-container {
-    max-height: 600px;
-    overflow: hidden;
+  max-height: 600px;
+  overflow: hidden;
 }
-.hoarding-list{
-    height: 100%;
-    max-height: 600px;
-    overflow: scroll;
+
+.hoarding-list {
+  height: 100%;
+  max-height: 600px;
+  overflow: scroll;
 }
+
 .hoarding-info {
-    height: 100%;
-    min-height: 600px;
-    background-color: white;
+  height: 100%;
+  min-height: 600px;
+  background-color: white;
 }
+
 #info-image {
-    background-image: url('http://globaladvertisers.in/admin/uploads/industry/size_large/3127f72b9d3d88fe61d80a8b7eb49468.jpg');
-    width: 100%;
-    height: 50%;
-    background-size: cover;
-    background-position: center;
+  background-image: url('http://globaladvertisers.in/admin/uploads/industry/size_large/3127f72b9d3d88fe61d80a8b7eb49468.jpg');
+  width: 100%;
+  height: 50%;
+  background-size: cover;
+  background-position: center;
 }
-::-webkit-scrollbar { 
-    display: none; 
+
+::-webkit-scrollbar {
+  display: none;
 }
+
 .map {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
+
 #box {
-    /* border-radius: 20px; */
-    overflow: hidden;
+  /* border-radius: 20px; */
+  overflow: hidden;
 }
+
 .leaflet-popup {
-    transform: translateY(10px);
+  transform: translateY(10px);
 }
+
 .list-item:hover {
-    cursor: pointer;
-    background-color: lightgray!important;
+  cursor: pointer;
+  background-color: lightgray !important;
 }
+
 #add-marker {
-    width: 70%;
+  width: 70%;
+}
+
+@media(max-height: 1000px) {
+  #map-container {
+    max-height: 70vh;
+  }
 }
