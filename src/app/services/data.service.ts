@@ -11,6 +11,10 @@ export class DataService {
     private db: AngularFirestore
   ) { }
 
+  getBookings(id) {
+    return this.db.collection('bookings', ref => ref.where('id', '==', id)).valueChanges();
+  }
+
   getLocationByName(name) {
     return this.db.collection('locations', ref => ref.where('name', '==', name)).valueChanges();
   }

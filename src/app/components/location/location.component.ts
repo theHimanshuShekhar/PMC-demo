@@ -12,6 +12,7 @@ export class LocationComponent implements OnInit {
   @Input() location;
   @Output() toggleInfo = new EventEmitter<string>();
   fullview = false;
+  bookings;
 
   constructor(
     private dataService: DataService,
@@ -23,9 +24,20 @@ export class LocationComponent implements OnInit {
     if (!this.location) {
       this.fullview = true;
       this.route.params.subscribe(routeurl => {
-        this.dataService.getLocation(routeurl.id).subscribe(location => this.location = location);
+        this.dataService.getLocation(routeurl.id).subscribe(location => {
+          this.location = location;
+          this.getBookings();
+        });
       });
     }
+  }
+
+  getDate(timestamp) {
+    return timestamp.toDate();
+  }
+
+  getBookings() {
+    this.dataService.getBookings(this.location.id).subscribe(bookings => this.bookings = bookings);
   }
 
   clickBooking() {
