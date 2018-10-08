@@ -15,10 +15,17 @@ import { DataService } from '../../services/data.service';
       ]
     ),
     trigger(
+<<<<<<< HEAD
       'popIn', [
         transition(':enter', [
           style({ opacity: 0, transform: 'scale(0.9)' }),
           animate('200ms ease-in', style({ opacity: 1, transform: 'scale(1)' }))
+=======
+      'fadeIn', [
+        transition(':enter', [
+          style({ opacity: 0 }),
+          animate('100ms ease-in', style({ opacity: 1 }))
+>>>>>>> 845a540b2df2b4a3df4628cf77582ac97262d27b
         ])
       ]
     )
