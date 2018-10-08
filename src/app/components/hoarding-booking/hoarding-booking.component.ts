@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { latLng, marker, tileLayer, latLngBounds, icon, LatLngExpression, Point } from 'leaflet';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { DataService } from '../../services/data.service';
+import { ToggleService } from '../../services/toggle.service';
 
 @Component({
   selector: 'app-hoarding-booking',
@@ -15,17 +16,10 @@ import { DataService } from '../../services/data.service';
       ]
     ),
     trigger(
-<<<<<<< HEAD
       'popIn', [
         transition(':enter', [
           style({ opacity: 0, transform: 'scale(0.9)' }),
           animate('200ms ease-in', style({ opacity: 1, transform: 'scale(1)' }))
-=======
-      'fadeIn', [
-        transition(':enter', [
-          style({ opacity: 0 }),
-          animate('100ms ease-in', style({ opacity: 1 }))
->>>>>>> 845a540b2df2b4a3df4628cf77582ac97262d27b
         ])
       ]
     )
@@ -52,7 +46,8 @@ export class HoardingBookingComponent implements OnInit {
   };
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -67,8 +62,9 @@ export class HoardingBookingComponent implements OnInit {
 
   setMarkers() {
     this.markers = [];
-    this.locations.forEach(location => {
-      this.markers.push(marker(this.getCoords(location.latlong), {
+    this.locations.forEach(hlocation => {
+      this.markers.push(marker(this.getCoords(hlocation.latlong), {
+        title: hlocation.name,
         riseOnHover: true,
         riseOffset: 250,
         icon: icon({
@@ -77,8 +73,10 @@ export class HoardingBookingComponent implements OnInit {
           iconUrl: 'assets/marker-icon.png',
           shadowUrl: 'assets/marker-shadow.png'
         })
-      }).bindPopup(location.name, { offset: new Point(0, -20) })
-        .on('click', this.handleEvent)
+      }).bindPopup(hlocation.name, { offset: new Point(0, -20) })
+        .on('mouseover', this.mouseover)
+        .on('mouseout', this.mouseout)
+        .on('click', this.handleClick.bind(this).bind(hlocation))
       );
     });
   }
@@ -87,14 +85,24 @@ export class HoardingBookingComponent implements OnInit {
     return [coords._lat, coords._long];
   }
 
-  handleEvent() {
-    console.log('handle marker click event');
+  handleClick(markerdata) {
+    const name = markerdata.sourceTarget.options.title;
+    this.dataService.getLocationByName(name).subscribe(locations => this.toggleShowInfo(locations[0]));
+  }
+  mouseout() {
+    this.closePopup();
+  }
+  mouseover() {
+    this.openPopup();
   }
 
   toggleShowInfo(location?) {
     if (location) {
       this.selected = location;
+      this.showInfo = true;
+      this.changeDetectorRef.detectChanges();
+    } else {
+      this.showInfo = false;
     }
-    this.showInfo = !this.showInfo;
   }
 }
