@@ -10,26 +10,36 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 // Third party
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 // Components
 import { AppComponent } from './app.component';
 import { HoardingBookingComponent } from './components/hoarding-booking/hoarding-booking.component';
 import { LocationComponent } from './components/location/location.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HoardingBookingComponent,
-    LocationComponent
+    LocationComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgbModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    LeafletModule.forRoot()
+    LeafletModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
