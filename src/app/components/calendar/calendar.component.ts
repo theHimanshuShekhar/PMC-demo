@@ -1,21 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { CalendarEvent, CalendarEventAction, CalendarView } from 'angular-calendar';
-
-import {
-  startOfDay,
-  endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addHours
-} from 'date-fns';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
 
 const colors: any = {
   blue: {
-    primary: '#1e90ff',
+    primary: '#ff0088',
     secondary: '#D1E8FF'
   }
 };
@@ -41,36 +30,21 @@ export class CalendarComponent implements OnInit {
     event: CalendarEvent;
   };
 
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fa fa-fw fa-pencil"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Clicked', event);
-      }
-    }
-  ];
-
   refresh: Subject<any> = new Subject();
 
   events: CalendarEvent[] = [];
 
   ngOnInit() {
-    console.log(this.view);
     if (this.bookings) {
-      console.log(this.bookings);
       this.bookings.forEach(booking => {
-        console.log(booking);
+        this.events.push({
+          start: booking.from.toDate(),
+          end: booking.to.toDate(),
+          title: 'Booking ID- ' + booking.bookid,
+          color: colors.blue,
+          allDay: true,
+        });
       });
     }
-  }
-
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      this.viewDate = date;
-    }
-  }
-
-  handleEvent(action: string, event: CalendarEvent): void {
-    console.log(event, action);
   }
 }

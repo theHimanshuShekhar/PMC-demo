@@ -26,7 +26,7 @@
           </div>
         </ng-container>
       </div>
-      <div class="col-12 col-lg-7 p-0">
+      <div class="col-12 col-lg-7 p-0" *ngIf="bookings">
         <app-calendar [bookings]="bookings"></app-calendar>
       </div>
     </div>
