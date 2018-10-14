@@ -1,0 +1,9 @@
+<div class="container-fluid p-0 px-1">
+  <ngb-carousel [showNavigationArrows]="false" *ngIf="images">
+    <ng-container *ngFor="let image of images">
+      <ng-template ngbSlide>
+        <img [src]="image" class="image" alt="Random first slide">
+      </ng-template>
+    </ng-container>
+  </ngb-carousel>
+</div>

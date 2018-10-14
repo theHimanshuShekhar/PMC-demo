@@ -12,19 +12,23 @@
 <ng-template #Full>
   <div class="container my-4 bg-white" *ngIf="location">
     <div class="row">
-      <div class="text-container col-12 col-lg-5 p-4">
-        <a routerLink="/">Home</a>
-        <h1>{{location.name}}</h1>
-        <!-- <h5>Rs.{{location.price}}</h5> -->
-        <hr>
-        <h5>Bookings</h5>
-        <ng-container *ngIf="bookings">
-          <div class="border p-4 my-1" *ngFor="let booking of bookings">
-            {{booking.bookid}}
-            <br>From: {{getDate(booking.from)}}
-            <br>To: {{getDate(booking.to)}}
+      <div class="text-container col-12 col-lg-5 px-0">
+        <div class="px-4 pt-4">
+          <a routerLink="/">Home</a>
+          <h1>{{location.name}}</h1>
+        </div>
+        <div class="carousel-container">
+          <app-image-carousel></app-image-carousel>
+        </div>
+        <div class="p-4">
+          <h5>Details</h5>
+          <p>Price: ₹{{location.price}}/day</p>
+          <p>Dimensions</p>
+          <p>Address</p>
+          <div class="btn-danger px-3 py-2 text-center pointer" routerLink="/book">
+            Book
           </div>
-        </ng-container>
+        </div>
       </div>
       <div class="col-12 col-lg-7 p-0" *ngIf="bookings">
         <app-calendar [bookings]="bookings"></app-calendar>

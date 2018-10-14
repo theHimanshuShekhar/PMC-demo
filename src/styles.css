@@ -1,11 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~leaflet/dist/leaflet.css";
-@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import "~angular-calendar/css/angular-calendar.css";
+@import "~roboto-fontface/css/roboto-condensed/roboto-condensed-fontface.css";
 
 body {
   margin: 0;
   padding: 0;
   background-color: #63B2F5;
+  font-family: roboto;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .test {

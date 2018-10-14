@@ -38,8 +38,4 @@
     </span>
     <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
   </div>
-
-  <div *ngIf="day.events.length > 0">
-    <h6 class="mx-2 booked-text">Booked</h6>
-  </div>
 </ng-template>

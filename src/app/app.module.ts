@@ -20,13 +20,27 @@ import { AppComponent } from './app.component';
 import { HoardingBookingComponent } from './components/hoarding-booking/hoarding-booking.component';
 import { LocationComponent } from './components/location/location.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { BookingComponent } from './components/booking/booking.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HistoryComponent } from './components/history/history.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { ImageCarouselComponent } from './components/image-carousel/image-carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HoardingBookingComponent,
     LocationComponent,
-    CalendarComponent
+    CalendarComponent,
+    BookingComponent,
+    LoginComponent,
+    RegisterComponent,
+    HistoryComponent,
+    FooterComponent,
+    TopbarComponent,
+    ImageCarouselComponent
   ],
   imports: [
     BrowserModule,
