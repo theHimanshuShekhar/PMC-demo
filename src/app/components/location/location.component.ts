@@ -1,9 +1,20 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-location',
+  animations: [
+    trigger(
+      'popIn', [
+        transition(':enter', [
+          style({ opacity: 0, transform: 'scale(0.9)' }),
+          animate('200ms ease-in', style({ opacity: 1, transform: 'scale(1)' }))
+        ])
+      ]
+    )
+  ],
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.css']
 })
@@ -23,8 +34,8 @@ export class LocationComponent implements OnInit {
   ngOnInit() {
     if (!this.location) {
       this.fullview = true;
-      this.route.params.subscribe(routeurl => {
-        this.dataService.getLocation(routeurl.id).subscribe(location => {
+      this.route.params.subscribe(params => {
+        this.dataService.getLocation(params.id).subscribe(location => {
           this.location = location;
           this.getBookings();
         });
@@ -41,7 +52,8 @@ export class LocationComponent implements OnInit {
   }
 
   clickBooking() {
-    this.router.navigateByUrl('/location/' + this.location.id);
+    window.scroll(0, 0);
+    this.router.navigate(['location', this.location.id]);
   }
 
   toggleShowInfo() {

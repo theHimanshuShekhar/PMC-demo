@@ -10,7 +10,7 @@
 </ng-container>
 
 <ng-template #Full>
-  <div class="container my-lg-4 bg-white border-top" *ngIf="location && bookings">
+  <div class="container my-lg-4 bg-white border-top" *ngIf="location && bookings; else Loading" [@popIn]>
     <div class="row">
       <div class="text-container col-12 col-lg-5 px-0">
         <div class="px-4 pt-2 pt-lg-4">
@@ -35,4 +35,8 @@
       </div>
     </div>
   </div>
+</ng-template>
+
+<ng-template #Loading>
+  <app-spinner></app-spinner>
 </ng-template>

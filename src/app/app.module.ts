@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 // Components
 import { AppComponent } from './app.component';
@@ -27,6 +28,8 @@ import { HistoryComponent } from './components/history/history.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { ImageCarouselComponent } from './components/image-carousel/image-carousel.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { ImageCarouselComponent } from './components/image-carousel/image-carous
     HistoryComponent,
     FooterComponent,
     TopbarComponent,
-    ImageCarouselComponent
+    ImageCarouselComponent,
+    DashboardComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,7 @@ import { ImageCarouselComponent } from './components/image-carousel/image-carous
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     LeafletModule.forRoot(),
+    NgxSpinnerModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory

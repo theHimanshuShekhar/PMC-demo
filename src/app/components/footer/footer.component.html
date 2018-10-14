@@ -13,7 +13,7 @@
         <!-- Content -->
         <div class="row">
           <div class="col-12 col-md-3 col-lg-2">
-            <img src="http://www.panvelcorporation.com/EIPPROD/css/images/pmc.png" alt="PMC Logo" height="80px" class="my-2">
+            <img src="../../../assets/pmc.png" alt="PMC Logo" height="80px" class="my-2">
           </div>
           <span class="col-12 col-md-9 mt-2">
             <h5 class="text-uppercase">Panvel Municipal Corporation</h5>
@@ -34,13 +34,16 @@
 
         <ul class="list-unstyled">
           <li>
-            <a routerLink="home">Home</a>
+            <a (click)="this.window.scroll(0, 0)" routerLink="home">Home</a>
           </li>
           <li>
-            <a routerLink="login">Login</a>
+            <a (click)="this.window.scroll(0, 0)" routerLink="login">Login</a>
           </li>
           <li>
-            <a routerLink="register">Register</a>
+            <a (click)="this.window.scroll(0, 0)" routerLink="register">Register</a>
+          </li>
+          <li>
+            <a (click)="this.window.scroll(0, 0)" routerLink="dashboard">Dashboard</a>
           </li>
         </ul>
 

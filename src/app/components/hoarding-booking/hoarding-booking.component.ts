@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { latLng, marker, tileLayer, latLngBounds, icon, LatLngExpression, Point } from 'leaflet';
-import { trigger, transition, style, animate, state } from '@angular/animations';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { DataService } from '../../services/data.service';
 
 @Component({
