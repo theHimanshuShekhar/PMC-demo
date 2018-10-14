@@ -26,12 +26,12 @@
 </ng-container>
 
 <ng-template #Full>
-  <div class="container my-lg-4 bg-white border-top" *ngIf="location && bookings; else Loading" [@popIn]>
+  <div class="container my-lg-4 bg-white" *ngIf="location && bookings; else Loading" [@popIn]>
     <div class="row">
       <div class="text-container col-12 col-lg-5 px-0">
-        <div class="px-4 pt-2 pt-lg-4">
-          <a routerLink="/">Home</a>
-          <h1>{{location.name}}</h1>
+        <div id="smallview-label" class="px-4 pt-2 pb-2 pt-lg-4">
+          <a routerLink="/" class="text-white">Home</a>
+          <h1 class="mb-0">{{location.name}}</h1>
         </div>
         <div class="carousel-container">
           <app-image-carousel></app-image-carousel>
@@ -41,7 +41,7 @@
           <p *ngIf="location.price">Price: ₹{{location.price}} /day</p>
           <p *ngIf="location.dimension">Dimension: {{location.dimension}}</p>
           <p *ngIf="location.address">{{location.address}}</p>
-          <div class="btn-danger px-3 py-2 text-center pointer" routerLink="/book">
+          <div class="btn-danger px-3 py-2 text-center pointer" (click)="sendToBooking()">
             Book
           </div>
         </div>

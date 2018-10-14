@@ -7,10 +7,10 @@
         </div>
       </div>
     </div>
-    <div id="booking-container" class="col-12 col-lg-4 p-0 bg-secondary text-center">
+    <div id="booking-container" class="col-12 col-lg-4 p-0 text-center">
       <div *ngIf="!showInfo" class="hoarding-list text-white py-3 px-0" [@enterAnimation]>
         <h2 class="mb-3">Locations</h2>
-        <div class="py-3 bg-light text-dark border list-item" *ngFor='let location of locations' (click)="toggleShowInfo(location)"
+        <div class="location-item py-3 text-dark border list-item" *ngFor='let location of locations' (click)="toggleShowInfo(location)"
           [@popIn]>
           <div>
             <h5>{{location.name}}</h5>

@@ -1,6 +1,84 @@
 <div class="container">
   <div class="form-container bg-white p-3 my-3">
-    <h3>Booking Form</h3>
-    <hr>
+    <div class="col  main-login main-center">
+      <form class="" method="post" action="#">
+
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <h3>Book Location</h3>
+            <hr>
+            <!-- Non-Authenticated User -->
+            <div class="form-group">
+              <label for="name" class="cols-sm-2 control-label">Name</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="cols-sm-2 control-label">Email</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Phone no</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                  <input type="tel" class="form-control" name="password" id="password" placeholder="Enter your number" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="dates" class="cols-sm-2 control-label">Dates</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <ngb-datepicker name="dates" #dp (select)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t"
+                    outsideDays="hidden">
+                  </ngb-datepicker>
+                </div>
+              </div>
+            </div>
+
+
+            <ng-template #t let-date let-focused="focused">
+              <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)"
+                (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                {{ date.day }}
+              </span>
+            </ng-template>
+
+            <hr>
+
+            <div class="form-group ">
+              <div type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Proceed
+                to Payment</div>
+            </div>
+
+          </div>
+
+          <div class="col-12 col-lg-8" *ngIf="location">
+            <div class="row">
+              <div class="col">
+                <h2>{{location.name}}</h2>
+                <p>{{location.address}}</p>
+
+                <pre>From: {{ fromDate | json }} </pre>
+                <pre>To: {{ toDate | json }} </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
   </div>
 </div>

@@ -59,4 +59,12 @@ export class LocationComponent implements OnInit {
     this.toggleInfo.emit();
   }
 
+  sendToBooking() {
+    this.router.navigate(['/book'], {
+      queryParams: {
+        id: this.location.id
+      }
+    });
+  }
+
 }

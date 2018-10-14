@@ -5,6 +5,12 @@
 #booking-container {
   max-height: 600px;
   overflow: hidden;
+  background-color: #009edf;
+}
+
+.location-item {
+  color: black;
+  background-color: white;
 }
 
 .hoarding-list {
@@ -47,7 +53,8 @@
 
 .list-item:hover {
   cursor: pointer;
-  background-color: lightgray !important;
+  background-color: #009edf !important;
+  color: white !important;
 }
 
 #add-marker {
