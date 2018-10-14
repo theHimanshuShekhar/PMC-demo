@@ -2,12 +2,6 @@
   margin: 50px 15px;
 }
 
-h1.title {
-  font-size: 50px;
-  font-family: 'Passion One', cursive;
-  font-weight: 400;
-}
-
 hr {
   width: 10%;
   color: #fff;
@@ -18,12 +12,12 @@ hr {
 }
 
 label {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 input,
 input::-webkit-input-placeholder {
-  font-size: 11px;
+  font-size: 15px;
   padding-top: 3px;
 }
 

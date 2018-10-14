@@ -19,7 +19,6 @@ import { trigger, transition, style, animate } from '@angular/animations';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
-
   @Input() location;
   @Output() toggleInfo = new EventEmitter<string>();
   fullview = false;

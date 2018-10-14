@@ -2,3 +2,40 @@
   max-height: 300px;
   width: 100%;
 }
+
+.smallview {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+#smallview-label {
+  background-color: #009edf;
+  color: white;
+}
+
+.btnInfo {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  color: white;
+}
+
+#details {
+  height: 480px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.icon {
+  filter: invert(1);
+}
+
+.smallview>.carousel-container {
+  max-height: 150px;
+}

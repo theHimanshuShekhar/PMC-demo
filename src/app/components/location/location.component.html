@@ -1,12 +1,28 @@
 <ng-container *ngIf="!fullview; else Full">
-  <h1>{{location.name}}</h1>
-  <div id="info-image"></div>
-  <div class="info my-4">
-    <h4>Rs.{{location.price}}</h4>
-    <p>Information about price and current status</p>
+  <div class="smallView">
+    <div id="smallview-label" class="row m-0 p-0 py-2 text-left">
+      <div class="col-1 pointer" (click)="toggleShowInfo()">
+        <img src="../../../assets/arrow-left-thick.svg" alt="Back" class="icon">
+      </div>
+      <div class="col pt-1">
+        <h5>{{location.name}}</h5>
+      </div>
+    </div>
+    <div id="details">
+      <div class="carousel-container">
+        <app-image-carousel></app-image-carousel>
+      </div>
+      <div class="p-4">
+        <p *ngIf="location.price">Price: ₹{{location.price}} /day</p>
+        <p *ngIf="location.address">{{location.address }}</p>
+      </div>
+      <div class="btnInfo">
+        <div class="px-3 py-2 text-center pointer mx-2" style="
+        background-color: #009edf" (click)="clickBooking()">More
+          info</div><br>
+      </div>
+    </div>
   </div>
-  <div class="btn btn-danger px-5 py-2 mb-3" (click)="clickBooking()">More info</div><br>
-  <div class="btn btn-secondary" (click)="toggleShowInfo()">Back</div>
 </ng-container>
 
 <ng-template #Full>
@@ -22,9 +38,9 @@
         </div>
         <div class="p-4">
           <h5>Details</h5>
-          <p>Price: ₹{{location.price}}/day</p>
-          <p>Dimensions</p>
-          <p>Address</p>
+          <p *ngIf="location.price">Price: ₹{{location.price}} /day</p>
+          <p *ngIf="location.dimension">Dimension: {{location.dimension}}</p>
+          <p *ngIf="location.address">{{location.address}}</p>
           <div class="btn-danger px-3 py-2 text-center pointer" routerLink="/book">
             Book
           </div>
