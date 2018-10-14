@@ -32,9 +32,10 @@
   let-highlightDay="highlightDay" let-unhighlightDay="unhighlightDay" let-eventClicked="eventClicked"
   let-tooltipTemplate="tooltipTemplate" let-tooltipAppendToBody="tooltipAppendToBody">
   <div class="cal-cell-top p-0 m-0">
-    <span class="cal-event" *ngFor="let event of day.events" [style.backgroundColor]="event.color.primary" [ngClass]="event?.cssClass"
-      [mwlCalendarTooltip]="event.title | calendarEventTitle:'monthTooltip':event" [tooltipPlacement]="tooltipPlacement"
-      [tooltipEvent]="event" [tooltipTemplate]="tooltipTemplate" [tooltipAppendToBody]="tooltipAppendToBody">
+    <span class="cal-event ml-2" *ngFor="let event of day.events" [style.backgroundColor]="event.color.primary"
+      [ngClass]="event?.cssClass" [mwlCalendarTooltip]="event.title | calendarEventTitle:'monthTooltip':event"
+      [tooltipPlacement]="tooltipPlacement" [tooltipEvent]="event" [tooltipTemplate]="tooltipTemplate"
+      [tooltipAppendToBody]="tooltipAppendToBody">
     </span>
     <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
   </div>

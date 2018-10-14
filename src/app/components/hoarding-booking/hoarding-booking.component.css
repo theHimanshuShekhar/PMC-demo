@@ -58,4 +58,8 @@
   #map-container {
     height: 70vh;
   }
+
+  .container {
+    max-width: 100%;
+  }
 }
