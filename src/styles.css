@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~leaflet/dist/leaflet.css";
 @import "~angular-calendar/css/angular-calendar.css";
-@import "~roboto-fontface/css/roboto-condensed/roboto-condensed-fontface.css";
 
 body {
   margin: 0;

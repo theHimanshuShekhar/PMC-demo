@@ -29,6 +29,7 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/roboto-fontface/css/roboto-condensed/roboto-condensed-fontface.css",
               "src/styles.css"
             ],
             "scripts": []

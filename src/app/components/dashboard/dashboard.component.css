@@ -1,0 +1,18 @@
+#stats-panel>div>div>.col-6>div {
+  min-height: 200px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#location-panel>div {
+  min-height: 500px;
+  max-height: 500px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#chart-panel>div {
+  height: 100%;
+}
