@@ -4,7 +4,7 @@
       <form class="" method="post" action="#">
 
         <div class="row">
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-lg-4">
             <h3>Book Location</h3>
             <hr>
             <!-- Non-Authenticated User -->
@@ -37,25 +37,27 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="dates" class="cols-sm-2 control-label">Dates</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <ngb-datepicker name="dates" #dp (select)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t"
-                    outsideDays="hidden">
-                  </ngb-datepicker>
+            <div class="form-group" *ngIf="bookings">
+              <label for="fromDate" class="cols-sm-2 control-label">From</label>
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="fromDate" [(ngModel)]="fromDate"
+                  ngbDatepicker #from="ngbDatepicker" [markDisabled]="isDisabled">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="from.toggle()" type="button"></button>
                 </div>
               </div>
             </div>
 
-
-            <ng-template #t let-date let-focused="focused">
-              <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)"
-                (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
-                {{ date.day }}
-              </span>
-            </ng-template>
-
+            <div class="form-group">
+              <label for="toDate" class="cols-sm-2 control-label">To</label>
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="toDate" [(ngModel)]="toDate" ngbDatepicker
+                  #to="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="to.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
             <hr>
 
             <div class="form-group ">
@@ -73,6 +75,8 @@
 
                 <pre>From: {{ fromDate | json }} </pre>
                 <pre>To: {{ toDate | json }} </pre>
+                <br>
+                <pre>{{bookings | json}}</pre>
               </div>
             </div>
           </div>

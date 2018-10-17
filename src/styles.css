@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~leaflet/dist/leaflet.css";
 @import "~angular-calendar/css/angular-calendar.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
   margin: 0;
   padding: 0;
   background-color: #63b2f5;
-  font-family: roboto;
+  font-family: 'Roboto', sans-serif;
 }
 
 .pointer {

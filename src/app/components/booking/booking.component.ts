@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
@@ -32,10 +32,11 @@ import { DataService } from 'src/app/services/data.service';
 export class BookingComponent implements OnInit {
 
   location;
+  bookings;
+  isDisabled;
 
-  hoveredDate: NgbDate;
-  fromDate: NgbDate;
-  toDate: NgbDate;
+  fromDate;
+  toDate;
 
   constructor(
     private router: Router,
@@ -58,22 +59,13 @@ export class BookingComponent implements OnInit {
     }
   }
 
-  isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
-  }
-
-  isInside(date: NgbDate) {
-    return date.after(this.fromDate) && date.before(this.toDate);
-  }
-
-  isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
-  }
-
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if (params.id) {
         this.dataService.getLocation(params.id).subscribe(location => this.location = location);
+        this.dataService.getBookings(params.id).subscribe(bookings => {
+          this.bookings = bookings;
+        });
       } else {
         this.router.navigate(['/']);
       }
