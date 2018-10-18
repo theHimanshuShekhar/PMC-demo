@@ -36,6 +36,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { PopularChartComponent } from './components/popular-chart/popular-chart.component';
 import { RevenueChartComponent } from './components/revenue-chart/revenue-chart.component';
+import { MonthlyRevenueChartComponent } from './components/monthly-revenue-chart/monthly-revenue-chart.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { RevenueChartComponent } from './components/revenue-chart/revenue-chart.
     SpinnerComponent,
     PopularChartComponent,
     RevenueChartComponent,
+    MonthlyRevenueChartComponent,
   ],
   imports: [
     BrowserModule,

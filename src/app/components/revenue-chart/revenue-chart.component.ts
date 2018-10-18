@@ -14,13 +14,12 @@ export class RevenueChartComponent implements OnInit {
   };
   public barChartLabels: string[];
   public barChartType: string = 'bar';
-  public barChartLegend: boolean = true;
+  public barChartLegend: boolean = false;
 
   public barChartData: any[] = [
     {
-      data: [], label: 'Revenue', backgroundColor: "rgba(159,170,174,0.8)",
-      borderWidth: 1,
-      hoverBackgroundColor: "rgba(232,105,90,0.8)",
+      data: [],
+      label: 'Revenue'
     }
   ];
 

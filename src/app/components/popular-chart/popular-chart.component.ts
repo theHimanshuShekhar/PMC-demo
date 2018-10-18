@@ -12,6 +12,11 @@ export class PopularChartComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true,
     scales: {
+      xAxes: [{
+        ticks: {
+          autoSkip: false,
+        }
+      }],
       yAxes: [{
         ticks: {
           beginAtZero: true,
@@ -28,7 +33,7 @@ export class PopularChartComponent implements OnInit {
   };
   public barChartLabels: string[];
   public barChartType: string = 'bar';
-  public barChartLegend: boolean = true;
+  public barChartLegend: boolean = false;
 
   public barChartData: any[] = [
     { data: [], label: 'Bookings' }

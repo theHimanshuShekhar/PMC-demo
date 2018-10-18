@@ -18,7 +18,6 @@
     <div id="stats-panel" class="my-1">
       <div class="container-fluid p-0">
         <div class="row justify-content-between">
-
           <div class="col-6 col-lg-3 p-0 pb-1 pb-lg-0" [@popIn]>
             <div class="bg-white mx-0 ml-1 mr-1 mx-lg-1 p-3">
               <h3>{{currMonth}} <br> Revenue</h3>
@@ -29,7 +28,7 @@
           </div>
 
           <div class="col-6 col-lg-3 p-0 pb-1 pb-lg-0" [@popIn]>
-            <div class="bg-white mx-0 mr-1 mx-lg-1 p-3">
+            <div class="bg-white mx-0 mr-1 mx-lg-1 p-1 p-md-3">
               <h3>Total <br> Revenue</h3>
               <div class="mt-4" *ngIf="totalCost" [@popIn]>
                 <h1>₹{{totalCost}}</h1>
@@ -37,7 +36,7 @@
             </div>
           </div>
           <div class="col-6 col-lg-3 p-0" [@popIn]>
-            <div class="bg-white mx-0 ml-1 mr-1 mx-lg-1 p-3">
+            <div class="bg-white mx-0 ml-1 mr-1 mx-lg-1 p-1 p-md-3">
               <h3>{{currMonth}} <br> Bookings</h3>
               <div class="mt-4" *ngIf="totalCount" [@popIn]>
                 <h1>{{monthlyCount}}</h1>
@@ -45,7 +44,7 @@
             </div>
           </div>
           <div class="col-6 col-lg-3 p-0" [@popIn]>
-            <div class="bg-white mx-0 mr-1 mx-lg-1 p-3">
+            <div class="bg-white mx-0 mr-1 mx-lg-1 p-1 p-md-3">
               <h3>Total <br> Bookings</h3>
               <div class="mt-4" *ngIf="totalCount" [@popIn]>
                 <h1>{{totalCount}}</h1>
@@ -57,6 +56,15 @@
     </div>
 
     <div class="row">
+      <!-- Monthly Revenue Chart Panel -->
+      <div class="col-12 p-0 my-1" id="revenue-chart-panel">
+        <div class="bg-white mx-1 p-3" [@popIn]>
+          <h3>Monthly Revenue</h3>
+          <div *ngIf="locations" [@popIn]>
+            <app-monthly-revenue-chart></app-monthly-revenue-chart>
+          </div>
+        </div>
+      </div>
       <!-- Locations List -->
       <div class="col-12 col-lg-4 p-0 my-1" id="location-panel" [@popIn]>
         <div class="bg-white mx-1 p-3">
@@ -74,24 +82,24 @@
 
       <!-- Popularity Chart Panel -->
       <div class="col-12 col-lg-8 p-0 my-1" id="popular-chart-panel">
-        <div class="bg-white mx-1 p-3" [@popIn]>
-          <h3>Popularity</h3>
+        <div class="bg-white mx-1 p-0 p-md-3 px-0" [@popIn]>
+          <h3>Location Popularity</h3>
           <div *ngIf="locations" [@popIn]>
             <app-popular-chart [locations]="locations"></app-popular-chart>
           </div>
         </div>
       </div>
 
-      <!-- Popularity Chart Panel -->
+      <!-- Location Revenue Chart Panel -->
       <div class="col-12 p-0 my-1" id="revenue-chart-panel">
-        <div class="bg-white mx-1 p-3" [@popIn]>
-          <h3>Revenue</h3>
+        <div class="bg-white mx-1 p-3 px-0" [@popIn]>
+          <h3>Location Revenue</h3>
           <div *ngIf="locations" [@popIn]>
             <app-revenue-chart [locations]="locations"></app-revenue-chart>
           </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
