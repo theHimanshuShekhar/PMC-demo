@@ -30,6 +30,7 @@
     "date-fns": "^1.29.0",
     "firebase": "^5.5.4",
     "leaflet": "^1.3.4",
+    "ng2-charts": "^1.6.0",
     "ngx-spinner": "^6.1.2",
     "roboto-fontface": "^0.10.0",
     "rxjs": "~6.2.0",

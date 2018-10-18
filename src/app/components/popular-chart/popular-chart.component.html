@@ -1,0 +1,6 @@
+<div *ngIf="locations" class="py-4">
+  <div style="display: block" *ngIf="barChartData[0].data.length === locations.length">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+      [chartType]="barChartType"></canvas>
+  </div>
+</div>

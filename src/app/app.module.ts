@@ -16,6 +16,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ChartsModule } from 'ng2-charts';
 
 // Pipes
 
@@ -33,6 +34,8 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { ImageCarouselComponent } from './components/image-carousel/image-carousel.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { PopularChartComponent } from './components/popular-chart/popular-chart.component';
+import { RevenueChartComponent } from './components/revenue-chart/revenue-chart.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     ImageCarouselComponent,
     DashboardComponent,
     SpinnerComponent,
+    PopularChartComponent,
+    RevenueChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,6 +10,12 @@ h1 {
   min-height: 200px;
 }
 
+#popular-chart-panel>div,
+#revenue-chart-panel>div {
+  height: 100%;
+}
+
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -20,6 +26,7 @@ h1 {
   overflow-x: hidden;
   overflow-y: scroll;
 }
+
 
 #chart-panel>div {
   height: 100%;

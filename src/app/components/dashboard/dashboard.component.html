@@ -6,7 +6,7 @@
           <div class="col-9 bg-white p-3 ">
             <h3 class="my-0">Dashboard</h3>
           </div>
-          <div class="col bg-white p-3 ">
+          <div class="col bg-white p-3">
             Logged in user
           </div>
         </div>
@@ -15,39 +15,39 @@
   </div>
   <div class="container p-0 mt-lg-3 text-center px-1 px-md-0">
     <!-- Stats panel -->
-    <div id="stats-panel" class="my-2">
+    <div id="stats-panel" class="my-1">
       <div class="container-fluid p-0">
         <div class="row justify-content-between">
 
-          <div class="col-6 col-lg-3 p-0 pb-1 pb-lg-0">
-            <div class="bg-white mx-1 p-3">
-              <h3>{{currMonth}} Revenue</h3>
-              <div class="mt-4" *ngIf="totalCost">
+          <div class="col-6 col-lg-3 p-0 pb-1 pb-lg-0" [@popIn]>
+            <div class="bg-white mx-0 ml-1 mr-1 mx-lg-1 p-3">
+              <h3>{{currMonth}} <br> Revenue</h3>
+              <div class="mt-4" *ngIf="totalCost" [@popIn]>
                 <h1>₹{{monthCost}}</h1>
               </div>
             </div>
           </div>
 
-          <div class="col-6 col-lg-3 p-0 pb-1 pb-lg-0">
-            <div class="bg-white mx-1 p-3">
-              <h3>Total Revenue</h3>
-              <div class="mt-4" *ngIf="totalCost">
+          <div class="col-6 col-lg-3 p-0 pb-1 pb-lg-0" [@popIn]>
+            <div class="bg-white mx-0 mr-1 mx-lg-1 p-3">
+              <h3>Total <br> Revenue</h3>
+              <div class="mt-4" *ngIf="totalCost" [@popIn]>
                 <h1>₹{{totalCost}}</h1>
               </div>
             </div>
           </div>
-          <div class="col-6 col-lg-3 p-0">
-            <div class="bg-white mx-1 p-3">
-              <h3>{{currMonth}} Bookings</h3>
-              <div class="mt-4" *ngIf="totalCount">
+          <div class="col-6 col-lg-3 p-0" [@popIn]>
+            <div class="bg-white mx-0 ml-1 mr-1 mx-lg-1 p-3">
+              <h3>{{currMonth}} <br> Bookings</h3>
+              <div class="mt-4" *ngIf="totalCount" [@popIn]>
                 <h1>{{monthlyCount}}</h1>
               </div>
             </div>
           </div>
-          <div class="col-6 col-lg-3 p-0">
-            <div class="bg-white mx-1 p-3">
-              <h3>Total Bookings</h3>
-              <div class="mt-4" *ngIf="totalCount">
+          <div class="col-6 col-lg-3 p-0" [@popIn]>
+            <div class="bg-white mx-0 mr-1 mx-lg-1 p-3">
+              <h3>Total <br> Bookings</h3>
+              <div class="mt-4" *ngIf="totalCount" [@popIn]>
                 <h1>{{totalCount}}</h1>
               </div>
             </div>
@@ -58,16 +58,37 @@
 
     <div class="row">
       <!-- Locations List -->
-      <div class="col-12 col-lg-4 p-0 my-2" id="location-panel">
-        <div class="bg-white mx-1">
-          Location list
+      <div class="col-12 col-lg-4 p-0 my-1" id="location-panel" [@popIn]>
+        <div class="bg-white mx-1 p-3">
+          <h3>Locations</h3>
+          <hr class="my-0">
+          <ng-container *ngIf="locations">
+            <div *ngFor="let location of locations">
+              <div class="border-bottom px-1 py-3">
+                {{location.name}}
+              </div>
+            </div>
+          </ng-container>
         </div>
       </div>
 
-      <!-- Chart Panel -->
-      <div class="col-12 col-lg-8 p-0 my-2" id="chart-panel">
-        <div class="bg-white mx-1 p-3">
+      <!-- Popularity Chart Panel -->
+      <div class="col-12 col-lg-8 p-0 my-1" id="popular-chart-panel">
+        <div class="bg-white mx-1 p-3" [@popIn]>
           <h3>Popularity</h3>
+          <div *ngIf="locations" [@popIn]>
+            <app-popular-chart [locations]="locations"></app-popular-chart>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popularity Chart Panel -->
+      <div class="col-12 p-0 my-1" id="revenue-chart-panel">
+        <div class="bg-white mx-1 p-3" [@popIn]>
+          <h3>Revenue</h3>
+          <div *ngIf="locations" [@popIn]>
+            <app-revenue-chart [locations]="locations"></app-revenue-chart>
+          </div>
         </div>
       </div>
     </div>

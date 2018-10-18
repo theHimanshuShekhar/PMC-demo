@@ -1,13 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
+  animations: [
+    trigger(
+      'popIn', [
+        transition(':enter', [
+          style({ opacity: 0, transform: 'scale(0.9)' }),
+          animate('200ms ease-in', style({ opacity: 1, transform: 'scale(1)' }))
+        ])
+      ]
+    )
+  ],
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
 
+  locations;
   monthCost;
   totalCost;
   monthlyCount;
@@ -23,6 +35,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.currMonth = this.months[new Date().getMonth()];
     this.getAllBookings();
+    this.getLocations();
+  }
+  getLocations() {
+    this.dataService.getLocations().subscribe(locations => {
+      this.locations = locations;
+    });
   }
   getAllBookings() {
     this.dataService.getAllBookings().subscribe(bookings => {
