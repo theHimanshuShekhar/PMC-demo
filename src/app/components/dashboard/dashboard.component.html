@@ -13,29 +13,43 @@
       </div>
     </div>
   </div>
-  <div class="container p-0 mt-lg-3 text-center">
+  <div class="container p-0 mt-lg-3 text-center px-1 px-md-0">
     <!-- Stats panel -->
     <div id="stats-panel" class="my-2">
       <div class="container-fluid p-0">
         <div class="row justify-content-between">
-          <div class="col-6 col-md-3 p-0">
-            <div class="bg-white mx-1">
-              Stat 1
+
+          <div class="col-6 col-lg-3 p-0 pb-1 pb-lg-0">
+            <div class="bg-white mx-1 p-3">
+              <h3>{{currMonth}} Revenue</h3>
+              <div class="mt-4" *ngIf="totalCost">
+                <h1>₹{{monthCost}}</h1>
+              </div>
             </div>
           </div>
-          <div class="col-6 col-md-3 p-0">
-            <div class="bg-white mx-1">
-              Stat 2
+
+          <div class="col-6 col-lg-3 p-0 pb-1 pb-lg-0">
+            <div class="bg-white mx-1 p-3">
+              <h3>Total Revenue</h3>
+              <div class="mt-4" *ngIf="totalCost">
+                <h1>₹{{totalCost}}</h1>
+              </div>
             </div>
           </div>
-          <div class="col-6 col-md-3 p-0">
-            <div class="bg-white mx-1">
-              Stat 3
+          <div class="col-6 col-lg-3 p-0">
+            <div class="bg-white mx-1 p-3">
+              <h3>{{currMonth}} Bookings</h3>
+              <div class="mt-4" *ngIf="totalCount">
+                <h1>{{monthlyCount}}</h1>
+              </div>
             </div>
           </div>
-          <div class="col-6 col-md-3 p-0">
-            <div class="bg-white mx-1">
-              Stat 4
+          <div class="col-6 col-lg-3 p-0">
+            <div class="bg-white mx-1 p-3">
+              <h3>Total Bookings</h3>
+              <div class="mt-4" *ngIf="totalCount">
+                <h1>{{totalCount}}</h1>
+              </div>
             </div>
           </div>
         </div>
@@ -44,16 +58,16 @@
 
     <div class="row">
       <!-- Locations List -->
-      <div class="col-4 p-0 my-2" id="location-panel">
+      <div class="col-12 col-lg-4 p-0 my-2" id="location-panel">
         <div class="bg-white mx-1">
           Location list
         </div>
       </div>
 
       <!-- Chart Panel -->
-      <div class="col-8 p-0 my-2" id="chart-panel">
-        <div class="bg-white mx-1">
-          Chart
+      <div class="col-12 col-lg-8 p-0 my-2" id="chart-panel">
+        <div class="bg-white mx-1 p-3">
+          <h3>Popularity</h3>
         </div>
       </div>
     </div>

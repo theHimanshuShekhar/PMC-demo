@@ -17,6 +17,8 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+// Pipes
+
 // Components
 import { AppComponent } from './app.component';
 import { HoardingBookingComponent } from './components/hoarding-booking/hoarding-booking.component';
@@ -46,7 +48,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     TopbarComponent,
     ImageCarouselComponent,
     DashboardComponent,
-    SpinnerComponent
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

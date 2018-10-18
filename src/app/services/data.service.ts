@@ -26,4 +26,8 @@ export class DataService {
     return this.db.doc('locations/' + id).valueChanges();
   }
 
+  getAllBookings() {
+    return this.db.collection('bookings').valueChanges();
+  }
+
 }

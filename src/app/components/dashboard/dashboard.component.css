@@ -1,3 +1,11 @@
+h1 {
+  overflow-wrap: break-word;
+}
+
+#dashboard {
+  overflow-x: hidden;
+}
+
 #stats-panel>div>div>.col-6>div {
   min-height: 200px;
 }
