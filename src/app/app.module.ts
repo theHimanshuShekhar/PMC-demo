@@ -37,6 +37,14 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { PopularChartComponent } from './components/popular-chart/popular-chart.component';
 import { RevenueChartComponent } from './components/revenue-chart/revenue-chart.component';
 import { MonthlyRevenueChartComponent } from './components/monthly-revenue-chart/monthly-revenue-chart.component';
+import { BookingsComponent } from './components/bookings/bookings.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { LocationsComponent } from './components/locations/locations.component';
+import { UserComponent } from './components/user/user.component';
+import { UsersComponent } from './components/users/users.component';
+import { OrderComponent } from './components/order/order.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +64,14 @@ import { MonthlyRevenueChartComponent } from './components/monthly-revenue-chart
     PopularChartComponent,
     RevenueChartComponent,
     MonthlyRevenueChartComponent,
+    BookingsComponent,
+    AnalyticsComponent,
+    OrdersComponent,
+    LocationsComponent,
+    UserComponent,
+    UsersComponent,
+    OrderComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,105 +1,38 @@
-<div id="dashboard" class="mb-5">
-  <div class="container-fluid px-0">
-    <div id="top-panel" class="bg-white px-2 py-1 border-top">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-9 bg-white p-3 ">
-            <h3 class="my-0">Dashboard</h3>
-          </div>
-          <div class="col bg-white p-3">
-            Logged in user
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container p-0 mt-lg-3 text-center px-1 px-md-0">
-    <!-- Stats panel -->
-    <div id="stats-panel" class="my-1">
-      <div class="container-fluid p-0">
-        <div class="row justify-content-between">
-          <div class="col-6 col-lg-3 p-0 pb-1 pb-lg-0" [@popIn]>
-            <div class="bg-white mx-0 ml-1 mr-1 mx-lg-1 p-3">
-              <h3>{{currMonth}} <br> Revenue</h3>
-              <div class="mt-4" *ngIf="totalCost" [@popIn]>
-                <h1>₹{{monthCost}}</h1>
-              </div>
+<div id="dashboard" class="mb-0">
+  <div class="container-fluid p-0 p-md-3 m-0 mx-md-3">
+    <div class="row justify-content-between">
+      <div class="col-12 col-md-3 bg-white p-0 p-md-3 text-center border-top border-bottom border-md-none" id="side-nav">
+        <div class="container-fluid">
+          <div class="row text-center">
+            <div class="selected col-3 py-3 px-0 col-md-12 pointer" (click)="changeSelected('analytics')">
+              <h5>Analytics</h5>
             </div>
-          </div>
-
-          <div class="col-6 col-lg-3 p-0 pb-1 pb-lg-0" [@popIn]>
-            <div class="bg-white mx-0 mr-1 mx-lg-1 p-1 p-md-3">
-              <h3>Total <br> Revenue</h3>
-              <div class="mt-4" *ngIf="totalCost" [@popIn]>
-                <h1>₹{{totalCost}}</h1>
-              </div>
+            <div class="selected col-3 py-3 px-0 col-md-12 pointer" (click)="changeSelected('orders')">
+              <h5>Orders</h5>
             </div>
-          </div>
-          <div class="col-6 col-lg-3 p-0" [@popIn]>
-            <div class="bg-white mx-0 ml-1 mr-1 mx-lg-1 p-1 p-md-3">
-              <h3>{{currMonth}} <br> Bookings</h3>
-              <div class="mt-4" *ngIf="totalCount" [@popIn]>
-                <h1>{{monthlyCount}}</h1>
-              </div>
+            <div class="selected col-3 py-3 px-0 col-md-12 pointer" (click)="changeSelected('locations')">
+              <h5>Locations</h5>
             </div>
-          </div>
-          <div class="col-6 col-lg-3 p-0" [@popIn]>
-            <div class="bg-white mx-0 mr-1 mx-lg-1 p-1 p-md-3">
-              <h3>Total <br> Bookings</h3>
-              <div class="mt-4" *ngIf="totalCount" [@popIn]>
-                <h1>{{totalCount}}</h1>
-              </div>
+            <div class="selected col-3 py-3 px-0 col-md-12 pointer" (click)="changeSelected('users')">
+              <h5>Users</h5>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="row">
-      <!-- Monthly Revenue Chart Panel -->
-      <div class="col-12 p-0 my-1" id="revenue-chart-panel">
-        <div class="bg-white mx-1 p-3" [@popIn]>
-          <h3>Monthly Revenue</h3>
-          <div *ngIf="locations" [@popIn]>
-            <app-monthly-revenue-chart></app-monthly-revenue-chart>
-          </div>
-        </div>
+      <div class="col-12 col-md-8 container-fluid px-0" id="content">
+        <ng-container *ngIf="selected === 'analytics'">
+          <app-analytics></app-analytics>
+        </ng-container>
+        <ng-container *ngIf="selected === 'orders'">
+          <app-orders></app-orders>
+        </ng-container>
+        <ng-container *ngIf="selected === 'locations'">
+          <app-locations></app-locations>
+        </ng-container>
+        <ng-container *ngIf="selected === 'users'">
+          <app-users></app-users>
+        </ng-container>
       </div>
-      <!-- Locations List -->
-      <div class="col-12 col-lg-4 p-0 my-1" id="location-panel" [@popIn]>
-        <div class="bg-white mx-1 p-3">
-          <h3>Locations</h3>
-          <hr class="my-0">
-          <ng-container *ngIf="locations">
-            <div *ngFor="let location of locations">
-              <div class="border-bottom px-1 py-3">
-                {{location.name}}
-              </div>
-            </div>
-          </ng-container>
-        </div>
-      </div>
-
-      <!-- Popularity Chart Panel -->
-      <div class="col-12 col-lg-8 p-0 my-1" id="popular-chart-panel">
-        <div class="bg-white mx-1 p-0 p-md-3 px-0" [@popIn]>
-          <h3>Location Popularity</h3>
-          <div *ngIf="locations" [@popIn]>
-            <app-popular-chart [locations]="locations"></app-popular-chart>
-          </div>
-        </div>
-      </div>
-
-      <!-- Location Revenue Chart Panel -->
-      <div class="col-12 p-0 my-1" id="revenue-chart-panel">
-        <div class="bg-white mx-1 p-3 px-0" [@popIn]>
-          <h3>Location Revenue</h3>
-          <div *ngIf="locations" [@popIn]>
-            <app-revenue-chart [locations]="locations"></app-revenue-chart>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>

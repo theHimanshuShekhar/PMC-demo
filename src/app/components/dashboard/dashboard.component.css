@@ -6,28 +6,28 @@ h1 {
   overflow-x: hidden;
 }
 
-#stats-panel>div>div>.col-6>div {
-  min-height: 200px;
+#content {
+  max-height: 80vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
-
-#popular-chart-panel>div,
-#revenue-chart-panel>div {
-  height: 100%;
-}
-
 
 ::-webkit-scrollbar {
   display: none;
 }
 
-#location-panel>div {
-  min-height: 500px;
-  max-height: 500px;
-  overflow-x: hidden;
-  overflow-y: scroll;
+
+.pointer>h3 {
+  padding: 10px 0;
+  border: 1px solid lightgray;
 }
 
+@media(max-width: 778px) {
+  h5 {
+    font-size: 0.9rem;
+  }
+}
 
-#chart-panel>div {
-  height: 100%;
+.selected:hover {
+  background-color: #63b1f55b;
 }

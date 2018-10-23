@@ -1,0 +1,72 @@
+<div class="bg-white px-5 py-4 mb-1 mx-0" *ngIf="booking && location">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-8 text-center">
+        <p>ID: {{booking.bookid}}</p>
+        <h3>{{location.name}}</h3>
+        <p>{{location.address}}</p>
+      </div>
+      <div class="col-12 col-md-4 px-3">
+        <h5>Amount:</h5>
+        <h6>₹{{booking.cost}}</h6>
+        <h5>Date: </h5>
+        <h6>{{booking.date.toDate() | date: 'dd/MM/yyyy'}}</h6>
+        <h5>Booked:</h5>
+        <h6>From: {{booking.from.toDate() | date: 'dd/MM/yyyy'}}</h6>
+        <h6>To: {{booking.to.toDate() | date: 'dd/MM/yyyy'}}</h6>
+      </div>
+      <div class="col-12 text-center">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="btn-primary py-2 my-2 pointer" (click)="open(content)">View Image</div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="btn-success py-2 my-2 pointer" (click)="open(confirm)">Process Booking</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #confirm let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Process Request</h4>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid text-center p-3">
+      <h3>Do you want to confirm or deny?</h3>
+      <div class="row mt-3">
+        <div class="col">
+          <div class="btn-success py-2 px-3 pointer">
+            Approve
+          </div>
+        </div>
+        <div class="col">
+          <div class="btn-danger px-3 py-2 pointer">
+            Decline
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cross click')">Close</button>
+  </div>
+</ng-template>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Advertisement Image</h4>
+  </div>
+  <div class="modal-body">
+    <img src="https://phadvocates.org/wp-content/themes/cardinal/images/default-thumb.png" alt="" style="width: 100%;">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cross click')">Close</button>
+  </div>
+</ng-template>

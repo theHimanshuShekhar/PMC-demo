@@ -8,7 +8,7 @@
       </div>
     </div>
     <div id="booking-container" class="col-12 col-lg-4 p-0 text-center">
-      <div *ngIf="!showInfo" class="hoarding-list text-white py-3 px-0" [@enterAnimation]>
+      <div *ngIf="!showInfo" class="hoarding-list text-white pt-3 pb-md-3 px-0" [@enterAnimation]>
         <h2 class="mb-3">Locations</h2>
         <div class="location-item py-3 text-dark border list-item" *ngFor='let location of locations' (click)="toggleShowInfo(location)"
           [@popIn]>

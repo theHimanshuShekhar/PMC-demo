@@ -1,0 +1,16 @@
+<div class="container bg-white my-0 my-md-3 py-2 px-3">
+  <ng-container *ngIf="bookings && locations">
+    <ng-container *ngFor="let booking of bookings">
+      <div class="border p-3">
+        <h3>Booking ID: {{booking.bookid}}</h3>
+        <h5>Location: {{getLocationName(booking.id)}}</h5>
+        <h6>Amount: {{booking.cost}}</h6>
+        <p>
+          Date: {{booking.date.toDate() | date: 'dd-MMM-yyyy'}}<br>
+          From: {{booking.from.toDate() | date: 'dd-MMM-yyyy'}}<br>
+          To: {{booking.to.toDate() | date: 'dd-MMM-yyyy'}} <br>
+        </p>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

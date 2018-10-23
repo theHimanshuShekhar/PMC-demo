@@ -10,7 +10,14 @@ export class RevenueChartComponent implements OnInit {
   @Input() locations;
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    scales: {
+      xAxes: [{
+        ticks: {
+          autoSkip: false,
+        }
+      }],
+    }
   };
   public barChartLabels: string[];
   public barChartType: string = 'bar';

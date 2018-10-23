@@ -32,7 +32,7 @@ export class PopularChartComponent implements OnInit {
     }
   };
   public barChartLabels: string[];
-  public barChartType: string = 'bar';
+  public barChartType: string = 'pie';
   public barChartLegend: boolean = false;
 
   public barChartData: any[] = [
