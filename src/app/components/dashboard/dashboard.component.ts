@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,8 +19,13 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class DashboardComponent implements OnInit {
 
+  constructor(
+    private auth: AuthService
+  ) { }
+
   selected;
   ngOnInit() {
+    this.auth.getAuthState().subscribe(user => console.log(user));
     this.changeSelected('locations');
   }
 
