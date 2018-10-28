@@ -1,6 +1,6 @@
 <div class="container-fluid px-0">
   <ng-container *ngIf="locations">
-    <div class="bg-white p-3 mb-1" *ngFor="let location of locations">
+    <div class="bg-white p-3 mb-1" *ngFor="let location of locations" [@popIn]>
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 col-md-6">
@@ -8,7 +8,7 @@
             <p class="my-0">{{location.id}}</p>
             <p class="my-0">{{location.address}}</p>
             <p class="my-0">₹{{location.price}}</p>
-            <div class="btn btn-primary" style="width: 100%">Edit Location</div>
+            <div class="btn btn-primary" style="width: 100%" (click)="open(content,location)">Edit Location</div>
           </div>
           <div class="col-12 col-md-6">
             <app-map></app-map>
@@ -21,7 +21,7 @@
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Edit Location</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -29,17 +29,28 @@
   <div class="modal-body">
     <form>
       <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-          </div>
-        </div>
+        <label for="lName">Name</label>
+        <input [(ngModel)]="selected.name" type="text" class="form-control" name="lName" id="lName" aria-describedby="emailHelp"
+          placeholder="Enter location name">
+      </div>
+      <div class="form-group">
+        <label for="lAddress">Address</label>
+        <textarea [(ngModel)]="selected.address" type="text" class="form-control" name="lAddress" id="lAddress"
+          placeholder="Address"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="lPrice">Price</label>
+        <input [(ngModel)]="selected.price" type="text" class="form-control" name="lPrice" id="lPrice" placeholder="Price">
+      </div>
+
+      <div class="form-group">
+        <label for="lPrice">Latitude and Longitude</label>
+        <input [(ngModel)]="selected.latlong._lat" type="text" class="form-control" name="lLat" id="lLat" placeholder="Latitude">
+        <input [(ngModel)]="selected.latlong._lat" type="text" class="form-control" name="lLong" id="lLong" placeholder="Longitude">
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-primary" style="width: 100%" (click)=" updateLocation(); modal.close('Save click')">Save</button>
   </div>
 </ng-template>

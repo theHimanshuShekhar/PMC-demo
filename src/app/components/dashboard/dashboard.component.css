@@ -31,3 +31,18 @@ h1 {
 .selected:hover {
   background-color: #63b1f55b;
 }
+
+@media(min-width: 779px) {
+  #side-nav {
+    height: 80vh;
+    position: relative;
+  }
+
+  #side-nav>div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+}

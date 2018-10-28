@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 
   selected;
   ngOnInit() {
-    this.changeSelected('orders');
+    this.changeSelected('locations');
   }
 
   changeSelected(menuitem) {
