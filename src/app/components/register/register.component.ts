@@ -10,9 +10,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class RegisterComponent implements OnInit {
 
   user = {
-    username: 'hshekhar',
-    email: 'hemanshoe.shekhar@gmail.com',
-    password: 'password',
+    username: '',
+    email: '',
+    password: '',
     type: 'email'
   }
 

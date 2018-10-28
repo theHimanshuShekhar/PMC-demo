@@ -10,8 +10,8 @@
             <p class="my-0">₹{{location.price}}</p>
             <div class="btn btn-primary" style="width: 100%" (click)="open(content,location)">Edit Location</div>
           </div>
-          <div class="col-12 col-md-6">
-            <app-map></app-map>
+          <div class="d-none d-md-block col-md-6">
+            <app-map [location]="location"></app-map>
           </div>
         </div>
       </div>

@@ -4,6 +4,9 @@
       <div class="col-12 col-md-8 text-center">
         <p>ID: {{booking.bookid}}</p>
         <h3>{{location.name}}</h3>
+        <div style="height: 120px">
+          <app-map [location]="location"></app-map>
+        </div>
         <p>{{location.address}}</p>
       </div>
       <div class="col-12 col-md-4 px-3">

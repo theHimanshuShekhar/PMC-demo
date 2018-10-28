@@ -4,7 +4,7 @@
       <form class="" method="post" action="#">
 
         <div class="row">
-          <div class="col-12 col-lg-4">
+          <div class="col-12 col-lg-5">
             <h3>Book Location</h3>
             <hr>
             <!-- Non-Authenticated User -->
@@ -68,17 +68,21 @@
 
           </div>
 
-          <div class="col-12 col-lg-8" *ngIf="location">
+          <div class="col-12 col-lg-7 border-left" *ngIf="location">
             <div class="row">
-              <div class="col">
-                <h2>{{location.name}}</h2>
+              <div class="col py-5 pr-0">
+                <h2 class="mb-3">{{location.name}}</h2>
                 <p>{{location.address}}</p>
-
+              </div>
+              <div class="col px-0">
+                <app-map [location]="location"></app-map>
+              </div>
+              <!-- <div class="col-12">
                 <pre>From: {{ fromDate | json }} </pre>
                 <pre>To: {{ toDate | json }} </pre>
                 <br>
                 <pre>{{bookings | json}}</pre>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
