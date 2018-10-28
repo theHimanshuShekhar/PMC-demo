@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Third party
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -45,6 +46,7 @@ import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { OrderComponent } from './components/order/order.component';
 import { MapComponent } from './components/map/map.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,7 @@ import { MapComponent } from './components/map/map.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     LeafletModule.forRoot(),
     NgxSpinnerModule,
     CalendarModule.forRoot({
