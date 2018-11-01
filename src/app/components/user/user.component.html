@@ -1,3 +1,26 @@
-<p>
-  user works!
-</p>
+<div class="container mb-5" *ngIf="user">
+  <div class="bg-white p-3 my-2">
+    <h5>{{user.email}}</h5>
+    <h5>{{user.userName}}</h5>
+    <h6>Joined on: {{user.joinDate.toDate() | date: 'dd-MMM-yyyy' }}</h6>
+  </div>
+  <ng-container *ngIf="bookings">
+    <ng-container *ngFor="let booking of bookings">
+      <div class="bg-white p-3 mb-2">
+        <dl class="row">
+          <dt class="col-sm-3">Booking ID</dt>
+          <dd class="col-sm-9">{{booking.bookid}}</dd>
+          <dt class="col-sm-3">Cost</dt>
+          <dd class="col-sm-9">{{booking.cost}}</dd>
+          <dt class="col-sm-3">Duration</dt>
+          <dd class="col-sm-9">
+            From: {{booking.from.toDate() | date: 'dd-MMM-yyyy' }} <br>
+            From: {{booking.from.toDate() | date: 'dd-MMM-yyyy' }}
+          </dd>
+
+        </dl>
+        {{booking | json}}
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

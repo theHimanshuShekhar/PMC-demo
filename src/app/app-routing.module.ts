@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HistoryComponent } from './components/history/history.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'account',
+    component: UserComponent
   },
   {
     path: '**',

@@ -34,4 +34,11 @@ export class DataService {
     return this.db.collection('bookings').valueChanges();
   }
 
+  getUser(uid) {
+    return this.db.doc('users/' + uid).valueChanges();
+  }
+
+  getUserBookings(uid) {
+    return this.db.collection('bookings', ref => ref.where("uid", "==", uid)).valueChanges();
+  }
 }

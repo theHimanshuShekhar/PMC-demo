@@ -19,13 +19,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
+  user;
+
   constructor(
     private auth: AuthService
   ) { }
 
   selected;
   ngOnInit() {
-    this.auth.getAuthState().subscribe(user => console.log(user));
+    this.auth.getAuthState().subscribe(user => this.user = user);
     this.changeSelected('locations');
   }
 

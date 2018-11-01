@@ -1,3 +1,12 @@
-<p>
-  users works!
-</p>
+<div class="container-fluid mx-0 px-0" *ngIf="users">
+  <ng-container *ngFor="let user of users">
+    <div class="bg-white p-3">
+      <h6><b>UID: </b>{{user.uid}}</h6>
+      <hr>
+      <h6><b>Username: </b>{{user.userName}}</h6>
+      <h6><b>Email: </b>{{user.email}}</h6>
+      <h6>Joined on: {{user.joinDate.toDate() | date: 'dd-MMM-yyyy' }}</h6>
+      <div class="btn btn-outline-primary pointer" routerLink="/account">Go to user account</div>
+    </div>
+  </ng-container>
+</div>

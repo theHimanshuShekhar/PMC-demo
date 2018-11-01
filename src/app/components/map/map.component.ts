@@ -15,7 +15,6 @@ export class MapComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.location);
     if (this.location) {
       this.options = {
         layers: [
