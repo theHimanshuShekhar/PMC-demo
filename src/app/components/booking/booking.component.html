@@ -1,92 +1,167 @@
 <div class="container">
   <div class="form-container bg-white p-3 my-3">
     <div class="col  main-login main-center">
-      <form class="" method="post" action="#">
+      <form>
+        <div>
+          <label>Applicant's Name</label>
+          <input type="text" name="name">
+        </div>
+        <div>
+          <span>Status:</span><br>
 
-        <div class="row">
-          <div class="col-12 col-lg-5">
-            <h3>Book Location</h3>
-            <hr>
-            <!-- Non-Authenticated User -->
-            <div class="form-group">
-              <label for="name" class="cols-sm-2 control-label">Name</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
-                </div>
-              </div>
-            </div>
+          <input type="radio" name="" value="checkedValue">
+          Private Organisation<br>
+          <input type="radio" name="" value="checkedValue">
+          Company<br>
+          <input type="radio" name="" value="checkedValue">
+          Charitable Trust<br>
+          <input type="radio" name="" value="checkedValue">
+          Others<br>
 
-            <div class="form-group">
-              <label for="email" class="cols-sm-2 control-label">Email</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="password" class="cols-sm-2 control-label">Phone no</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                  <input type="tel" class="form-control" name="password" id="password" placeholder="Enter your number" />
-                </div>
-              </div>
-            </div>
+        </div>
 
-            <ng-container *ngIf="bookings">
-              <div class="form-group">
-                <label for="fromDate" class="cols-sm-2 control-label">From</label>
-                <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" name="fromDate" [(ngModel)]="fromDate"
-                    ngbDatepicker #from="ngbDatepicker" [markDisabled]="isDisabled">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary calendar" (click)="from.toggle()" type="button"></button>
-                  </div>
-                </div>
-              </div>
+        <div>
 
-              <div class="form-group">
-                <label for="toDate" class="cols-sm-2 control-label">To</label>
-                <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" name="toDate" [(ngModel)]="toDate" ngbDatepicker
-                    #to="ngbDatepicker">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary calendar" (click)="to.toggle()" type="button"></button>
-                  </div>
-                </div>
-              </div>
-              <hr>
-            </ng-container>
-            <div class="form-group ">
-              <div type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Proceed
-                to Payment</div>
-            </div>
-
+          <label>Address:</label>
+          <textarea name="addr" rows="3"></textarea>
+        </div>
+        <div>
+          <span>Medium used for the advertisement:</span><br>
+          <div>
+            <input type="radio" name="n1" value="checkedValue"> Broadcasted<br>
+            <input type="radio" name="n1" value="checkedValue"> Not Broadcasted<br>
           </div>
+        </div>
+        <div>
+          <span>Type of advertisement</span><br>
+          <div>
+            <input type="radio" name="n2" value="checkedValue"> Temporary<br>
+            <input type="radio" name="n2" value="checkedValue"> Not Temporary<br>
+          </div>
+        </div>
+        <div>
+          <label>Type of Advertisement</label>
+          <input type="text" name="f1">
+        </div>
+        <div>
+          <span>Have u applied for the</span>
+          <div>
+            <input type="radio" name="n3" value="checkedValue"> Yes&nbsp;
+            <input type="radio" name="n3" value="checkedValue"> No
+          </div>
+          <br>
 
-          <div class="col-12 col-lg-7 border-left" *ngIf="location">
-            <div class="row">
-              <div class="col py-5 pr-0">
-                <h2 class="mb-3">{{location.name}}</h2>
-                <p>{{location.address}}</p>
-              </div>
-              <div class="col px-0">
-                <app-map [location]="location"></app-map>
-              </div>
-              <!-- <div class="col-12">
-                <pre>From: {{ fromDate | json }} </pre>
-                <pre>To: {{ toDate | json }} </pre>
-                <br>
-                <pre>{{bookings | json}}</pre>
-              </div> -->
+        </div>
+        <label>If yes,</label><br>
+        <div>
+          <label>Type of Advertisement</label>
+          <input type="text" name="f1">
+        </div>
+        <div>
+          <label>To:</label>&nbsp;&nbsp;
+          <input type="date" name="to">
+          <label>From:</label>&nbsp;&nbsp;
+          <input type="date" name="from">
+        </div>
+        <div>
+          <span>Location</span>
+          <div>
+            <input type="radio" name="n4" value="checkedValue"> Single&nbsp;
+            <input type="radio" name="n4" value="checkedValue"> Multiple
+          </div>
+        </div>
+        <div>
+          <label>Location No(s).</label>
+          <textarea name="locNo" rows="3"></textarea>
+        </div>
+        <div>
+          <label>Give the tagline/summarize version of the advertisement:</label>
+          <input type="text" name="ad">
+        </div>
+        <div>
+          <label>Attach an image file of ur advertisement:</label>
+          <input type="file" name="im">
+        </div>
+
+        <div>
+          <label> Dimensions</label>
+          <table name="dim">
+            <thead>
+              <tr>
+                <th>Dimensions</th>
+                <th>Square Feet</th>
+                <th>Square Metres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">Length</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td scope="row">Width</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td scope="row">Total Area</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td scope="row">Height</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <span>Have u applied for the</span>
+          <div>
+            <label>Name of the street:</label>
+            <input type="text" name="street1">
+          </div>
+          <div>
+            <label>Width of the street:</label>
+            <input type="text" name="street2">
+          </div>
+          <div>
+            <label>Serial Nos. of the hoardings within 25 metres radius of the Location:</label>
+            <input type="text" name="serial">
+          </div>
+          <div>
+            <label>No. of trees in the 25 metres radius of the circle</label>
+            <input type="number" name="trees">
+          </div>
+          <div>
+            <span>Is it necessary to cut the trees:</span>
+            <div>
+              <input type="radio" name="n5" value="checkedValue"> Yes&nbsp;
+              <input type="radio" name="n5" value="checkedValue"> No
             </div>
           </div>
         </div>
-
+        <div>
+          <label>Name of the Land Owner:</label>
+          <input type="text" name="landOwner">
+        </div>
+        <div>
+          <span>Have u submitted NOC issued by the owner:</span>
+          <div>
+            <input type="radio" name="n6" value="checkedValue">Yes&nbsp;
+            <input type="radio" name="n6" value="checkedValue">No
+          </div>
+        </div>
+        <div>
+          <span>Are the documents submitted according to the Article 19(B): </span>
+          <div>
+            <input type="radio" name="n7" value="checkedValue">Yes&nbsp;
+            <input type="radio" name="n7" value="checkedValue">No
+          </div>
+        </div>
+        <button type="submit" (click)="submitForm()">Submit</button>
       </form>
     </div>
   </div>
