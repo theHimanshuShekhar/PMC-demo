@@ -31,6 +31,16 @@ import { DataService } from 'src/app/services/data.service';
 
 export class BookingComponent implements OnInit {
 
+  currpage = 0;
+
+  showAccountDetails = false;
+  showCompanyDetails = false;
+  showAdvertisementDetails = false;
+  showDateDetails = false;
+  showLocationDetails = false;
+  showAdvert = false;
+  showDocs = false;
+
   location;
   bookings;
   isDisabled;
@@ -48,16 +58,6 @@ export class BookingComponent implements OnInit {
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 
-  onDateSelection(date: NgbDate) {
-    if (!this.fromDate && !this.toDate) {
-      this.fromDate = date;
-    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
-      this.toDate = date;
-    } else {
-      this.toDate = null;
-      this.fromDate = date;
-    }
-  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -70,5 +70,20 @@ export class BookingComponent implements OnInit {
         this.router.navigate(['/']);
       }
     });
+  }
+
+  navigate(type) {
+    switch (type) {
+      case 'next':
+        if (this.currpage < 5) {
+          this.currpage++;
+        }
+        break;
+      case 'prev':
+        if (this.currpage > 0) {
+          this.currpage--;
+        }
+        break;
+    }
   }
 }

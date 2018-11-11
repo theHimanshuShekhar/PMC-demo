@@ -1,93 +1,210 @@
 <div class="container">
   <div class="form-container bg-white p-3 my-3">
     <div class="col  main-login main-center">
-      <form class="" method="post" action="#">
+      <form>
+        <ng-container *ngIf="currpage !== 0 else acc"></ng-container>
+        <ng-container *ngIf="currpage !== 1 else comp"></ng-container>
+        <ng-container *ngIf="currpage !== 2 else advert"></ng-container>
+        <ng-container *ngIf="currpage !== 3 else chooseLocations"></ng-container>
+        <ng-container *ngIf="currpage !== 4 else chooseDates"></ng-container>
+        <ng-container *ngIf="currpage !== 5 else advertData"></ng-container>
 
-        <div class="row">
-          <div class="col-12 col-lg-5">
-            <h3>Book Location</h3>
-            <hr>
-            <!-- Non-Authenticated User -->
-            <div class="form-group">
-              <label for="name" class="cols-sm-2 control-label">Name</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="email" class="cols-sm-2 control-label">Email</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="password" class="cols-sm-2 control-label">Phone no</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                  <input type="tel" class="form-control" name="password" id="password" placeholder="Enter your number" />
-                </div>
-              </div>
-            </div>
-
-            <ng-container *ngIf="bookings">
-              <div class="form-group">
-                <label for="fromDate" class="cols-sm-2 control-label">From</label>
-                <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" name="fromDate" [(ngModel)]="fromDate"
-                    ngbDatepicker #from="ngbDatepicker" [markDisabled]="isDisabled">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary calendar" (click)="from.toggle()" type="button"></button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="toDate" class="cols-sm-2 control-label">To</label>
-                <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" name="toDate" [(ngModel)]="toDate" ngbDatepicker
-                    #to="ngbDatepicker">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary calendar" (click)="to.toggle()" type="button"></button>
-                  </div>
-                </div>
-              </div>
-              <hr>
-            </ng-container>
-            <div class="form-group ">
-              <div type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Proceed
-                to Payment</div>
-            </div>
-
+        <!-- <div class="form-group">
+          <span class="custom-control-description">Have u applied for the</span>
+          <div>
+            <label for="street1">Name of the street:</label>
+            <input type="text" name="street1" id="street1" class="form-control">
           </div>
-
-          <div class="col-12 col-lg-7 border-left" *ngIf="location">
-            <div class="row">
-              <div class="col py-5 pr-0">
-                <h2 class="mb-3">{{location.name}}</h2>
-                <p>{{location.address}}</p>
-              </div>
-              <div class="col px-0">
-                <app-map [location]="location"></app-map>
-              </div>
-              <!-- <div class="col-12">
-                <pre>From: {{ fromDate | json }} </pre>
-                <pre>To: {{ toDate | json }} </pre>
-                <br>
-                <pre>{{bookings | json}}</pre>
-              </div> -->
+          <div>
+            <label for="street2">Width of the street:</label>
+            <input type="text" name="street2" id="street2" class="form-control">
+          </div>
+          <div>
+            <label for="serial">Serial Nos. of the hoardings within 25 metres radius of the Location:</label>
+            <input type="text" class="form-control" id="serial" name="serial">
+          </div>
+          <div>
+            <label for="trees">No. of trees in the 25 metres radius of the circle</label>
+            <input type="number" class="form-control" id="trees" name="trees">
+          </div>
+          <div>
+            <span class="custom-control-description">Is it necessary to cut the trees:</span>
+            <div class="form-group form-check-inline">
+              <input class="form-check-input" type="radio" name="n5" id="n51" value="checkedValue"> Yes&nbsp;
+              <input class="form-check-input" type="radio" name="n5" id="n52" value="checkedValue"> No
             </div>
           </div>
         </div>
-
+        <div class="form-group">
+          <label for="landOwner">Name of the Land Owner:</label>
+          <input type="text" name="landOwner" id="landOwner" class="form-control" placeholder="">
+        </div>
+        <div class="form-group">
+          <span class="custom-control-description">Have u submitted NOC issued by the owner:</span>
+          <div class="form-group form-check-inline">
+            <input class="form-check-input" type="radio" name="n6" id="n61" value="checkedValue">Yes&nbsp;
+            <input class="form-check-input" type="radio" name="n6" id="n62" value="checkedValue">No
+          </div>
+        </div>
+        <div class="form-group">
+          <span class="custom-control-description">Are the documents submitted according to the Article 19(B): </span>
+          <div class="form-group form-check-inline">
+            <input class="form-check-input" type="radio" name="n7" id="n71" value="checkedValue">Yes&nbsp;
+            <input class="form-check-input" type="radio" name="n7" id="n72" value="checkedValue">No
+          </div>
+        </div> -->
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col px-0 pr-2">
+              <div class="btn btn-outline-primary btn-lg btn-block" (click)="navigate('prev')">Previous</div>
+            </div>
+            <div class="col px-0 pl-2">
+              <div class="btn btn-outline-danger btn-lg btn-block" (click)="navigate('next')">Next</div>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </div>
 </div>
+
+
+<ng-template #acc>
+  <div class="form-group">
+    <label for="name">Applicant's Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="name">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+  </div>
+  <div class="form-group">
+    <label for="name">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+  </div>
+</ng-template>
+
+<ng-template #comp>
+  <div class="form-check form-group">
+    <span class="custom-control-description">Status:</span><br>
+    <input type="radio" class="form-check-input px-10" name="" id="" value="checkedValue">Private Organisation<br>
+    <input type="radio" class="form-check-input" name="" id="" value="checkedValue">Company<br>
+    <input type="radio" class="form-check-input" name="" id="" value="checkedValue">Charitable Trust<br>
+    <input type="radio" class="form-check-input" name="" id="" value="checkedValue">Others<br>
+  </div>
+  <div class="form-group">
+    <label for="addr">Address:</label>
+    <textarea class="form-control px-10" name="addr" id="addr" rows="3"></textarea>
+  </div>
+</ng-template>
+
+<ng-template #advert>
+  <div class="form-check form-group">
+    <span class="custom-control-description">Medium used for the advertisement:</span><br>
+    <div class="form-group">
+      <input class="form-check-input" type="radio" name="n1" id="n11" value="checkedValue"> Broadcasted<br>
+      <input class="form-check-input" type="radio" name="n1" id="n12" value="checkedValue"> Not Broadcasted<br>
+    </div>
+  </div>
+  <div class="form-group form-check">
+    <span class="custom-control-description">Type of advertisement</span><br>
+    <div class="form-group">
+      <input class="form-check-input" type="radio" name="n2" id="n21" value="checkedValue"> Temporary<br>
+      <input class="form-check-input" type="radio" name="n2" id="n22" value="checkedValue"> Not Temporary<br>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="f1">Type of Advertisement</label>
+    <input type="text" name="f1" id="f1" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <span class="custom-control-description">Have u applied for the</span>
+    <div class="form-group form-check-inline">
+      <input class="form-check-input" type="radio" name="n3" id="n31" value="checkedValue"> Yes&nbsp;
+      <input class="form-check-input" type="radio" name="n3" id="n32" value="checkedValue"> No
+    </div>
+    <br>
+  </div>
+  <label class="custom-control-description">If yes,</label><br>
+  <div class="form-group">
+    <label for="f1">Type of Advertisement</label>
+    <input type="text" name="f1" id="f1" class="form-control" placeholder="">
+  </div>
+</ng-template>
+
+<ng-template #chooseDates>
+  <div class="form-group form-inline">
+    <label for="to">To:</label>&nbsp;&nbsp;
+    <input type="date" id="to" name="to" class="calendar">
+    <label for="From">From:</label>&nbsp;&nbsp;
+    <input type="date" id="from" name="from" class="calendar">
+  </div>
+</ng-template>
+
+<ng-template #chooseLocations>
+  <div class="form-group">
+    <span class="custom-control-description">Location</span>
+    <div class="form-group form-check-inline">
+      <input class="form-check-input" type="radio" name="n4" id="n41" value="checkedValue"> Single&nbsp;
+      <input class="form-check-input" type="radio" name="n4" id="n42" value="checkedValue"> Multiple
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="locNo">Location No(s).</label>
+    <textarea class="form-control" name="locNo" id="locNo" rows="3"></textarea>
+  </div>
+</ng-template>
+
+<ng-template #advertData>
+  <div class="form-group">
+    <label for="dim"> Dimensions</label>
+    <table class="table table-1:striped table-inverse table-responsive" name="dim" id="dim">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Dimensions</th>
+          <th>Square Feet</th>
+          <th>Square Metres</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row">Length</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td scope="row">Width</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td scope="row">Total Area</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td scope="row">Height</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="form-group">
+    <label for="ad">Give the tagline/summarize version of the advertisement:</label>
+    <input type="text" class="form-control" name="ad" id="ad" placeholder="Summary">
+  </div>
+  <div class="form-group">
+    <label for="im">Attach an image file of ur advertisement:</label>
+    <input type="file" class="form-control" name="im" id="im">
+  </div>
+</ng-template>
+
+<ng-template #docs>
+
+</ng-template>
+
+
+<ng-template #docupload>
+
+</ng-template>
