@@ -20,7 +20,8 @@ export class MapComponent implements OnInit {
         layers: [
           tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Open Street Map' })
         ],
-        maxBounds: latLngBounds(latLng(this.location.latlong._lat, this.location.latlong._long), latLng(this.location.latlong._lat, this.location.latlong._long)),
+        maxBounds: latLngBounds(
+          latLng(this.location.latlong._lat, this.location.latlong._long), latLng(this.location.latlong._lat, this.location.latlong._long)),
         minZoom: 13,
         zoom: 13,
         dragging: false,
@@ -39,7 +40,7 @@ export class MapComponent implements OnInit {
       })
         .bindPopup(this.location.name, { offset: new Point(0, -20) })
         .on('mouseover', this.mouseover)
-        .on('mouseout', this.mouseout)
+        .on('mouseout', this.mouseout);
     }
   }
 

@@ -1,228 +1,27 @@
-<div class="container">
-  <div class="form-container bg-white p-3 my-3">
-    <div class="col  main-login main-center">
+<div class="container p-0">
+  <div class="form-container bg-white p-0 p-md-3 my-0 my-md-3">
+    <div class="col main-login main-center">
       <form>
-<<<<<<< HEAD
-        <div>
-          <label>Applicant's Name</label>
-          <input type="text" name="name">
-        </div>
-        <div>
-          <span>Status:</span><br>
-
-          <input type="radio" name="" value="checkedValue">
-          Private Organisation<br>
-          <input type="radio" name="" value="checkedValue">
-          Company<br>
-          <input type="radio" name="" value="checkedValue">
-          Charitable Trust<br>
-          <input type="radio" name="" value="checkedValue">
-          Others<br>
-
+        <div style="min-height: 450px">
+          <ng-container *ngIf="currpage !== 0 else acc"></ng-container>
+          <ng-container *ngIf="currpage !== 1 else comp"></ng-container>
+          <ng-container *ngIf="currpage !== 2 else advert"></ng-container>
+          <ng-container *ngIf="currpage !== 3 else chooseDates"></ng-container>
+          <ng-container *ngIf="currpage !== 4 else advertData"></ng-container>
+          <ng-container *ngIf="currpage !== 5 else docupload"></ng-container>
         </div>
 
-        <div>
-
-          <label>Address:</label>
-          <textarea name="addr" rows="3"></textarea>
-        </div>
-        <div>
-          <span>Medium used for the advertisement:</span><br>
-          <div>
-            <input type="radio" name="n1" value="checkedValue"> Broadcasted<br>
-            <input type="radio" name="n1" value="checkedValue"> Not Broadcasted<br>
-          </div>
-        </div>
-        <div>
-          <span>Type of advertisement</span><br>
-          <div>
-            <input type="radio" name="n2" value="checkedValue"> Temporary<br>
-            <input type="radio" name="n2" value="checkedValue"> Not Temporary<br>
-          </div>
-        </div>
-        <div>
-          <label>Type of Advertisement</label>
-          <input type="text" name="f1">
-        </div>
-        <div>
-          <span>Have u applied for the</span>
-          <div>
-            <input type="radio" name="n3" value="checkedValue"> Yes&nbsp;
-            <input type="radio" name="n3" value="checkedValue"> No
-          </div>
-          <br>
-
-        </div>
-        <label>If yes,</label><br>
-        <div>
-          <label>Type of Advertisement</label>
-          <input type="text" name="f1">
-        </div>
-        <div>
-          <label>To:</label>&nbsp;&nbsp;
-          <input type="date" name="to">
-          <label>From:</label>&nbsp;&nbsp;
-          <input type="date" name="from">
-        </div>
-        <div>
-          <span>Location</span>
-          <div>
-            <input type="radio" name="n4" value="checkedValue"> Single&nbsp;
-            <input type="radio" name="n4" value="checkedValue"> Multiple
-          </div>
-        </div>
-        <div>
-          <label>Location No(s).</label>
-          <textarea name="locNo" rows="3"></textarea>
-        </div>
-        <div>
-          <label>Give the tagline/summarize version of the advertisement:</label>
-          <input type="text" name="ad">
-        </div>
-        <div>
-          <label>Attach an image file of ur advertisement:</label>
-          <input type="file" name="im">
-        </div>
-
-        <div>
-          <label> Dimensions</label>
-          <table name="dim">
-            <thead>
-              <tr>
-                <th>Dimensions</th>
-                <th>Square Feet</th>
-                <th>Square Metres</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td scope="row">Length</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td scope="row">Width</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td scope="row">Total Area</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td scope="row">Height</td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <span>Have u applied for the</span>
-          <div>
-            <label>Name of the street:</label>
-            <input type="text" name="street1">
-          </div>
-          <div>
-            <label>Width of the street:</label>
-            <input type="text" name="street2">
-          </div>
-          <div>
-            <label>Serial Nos. of the hoardings within 25 metres radius of the Location:</label>
-            <input type="text" name="serial">
-          </div>
-          <div>
-            <label>No. of trees in the 25 metres radius of the circle</label>
-            <input type="number" name="trees">
-          </div>
-          <div>
-            <span>Is it necessary to cut the trees:</span>
-            <div>
-              <input type="radio" name="n5" value="checkedValue"> Yes&nbsp;
-              <input type="radio" name="n5" value="checkedValue"> No
-            </div>
-          </div>
-        </div>
-        <div>
-          <label>Name of the Land Owner:</label>
-          <input type="text" name="landOwner">
-        </div>
-        <div>
-          <span>Have u submitted NOC issued by the owner:</span>
-          <div>
-            <input type="radio" name="n6" value="checkedValue">Yes&nbsp;
-            <input type="radio" name="n6" value="checkedValue">No
-          </div>
-        </div>
-        <div>
-          <span>Are the documents submitted according to the Article 19(B): </span>
-          <div>
-            <input type="radio" name="n7" value="checkedValue">Yes&nbsp;
-            <input type="radio" name="n7" value="checkedValue">No
-          </div>
-        </div>
-        <button type="submit" (click)="submitForm()">Submit</button>
-      </form>
-=======
-        <ng-container *ngIf="currpage !== 0 else acc"></ng-container>
-        <ng-container *ngIf="currpage !== 1 else comp"></ng-container>
-        <ng-container *ngIf="currpage !== 2 else advert"></ng-container>
-        <ng-container *ngIf="currpage !== 3 else chooseLocations"></ng-container>
-        <ng-container *ngIf="currpage !== 4 else chooseDates"></ng-container>
-        <ng-container *ngIf="currpage !== 5 else advertData"></ng-container>
-
-        <!-- <div class="form-group">
-          <span class="custom-control-description">Have u applied for the</span>
-          <div>
-            <label for="street1">Name of the street:</label>
-            <input type="text" name="street1" id="street1" class="form-control">
-          </div>
-          <div>
-            <label for="street2">Width of the street:</label>
-            <input type="text" name="street2" id="street2" class="form-control">
-          </div>
-          <div>
-            <label for="serial">Serial Nos. of the hoardings within 25 metres radius of the Location:</label>
-            <input type="text" class="form-control" id="serial" name="serial">
-          </div>
-          <div>
-            <label for="trees">No. of trees in the 25 metres radius of the circle</label>
-            <input type="number" class="form-control" id="trees" name="trees">
-          </div>
-          <div>
-            <span class="custom-control-description">Is it necessary to cut the trees:</span>
-            <div class="form-group form-check-inline">
-              <input class="form-check-input" type="radio" name="n5" id="n51" value="checkedValue"> Yes&nbsp;
-              <input class="form-check-input" type="radio" name="n5" id="n52" value="checkedValue"> No
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="landOwner">Name of the Land Owner:</label>
-          <input type="text" name="landOwner" id="landOwner" class="form-control" placeholder="">
-        </div>
-        <div class="form-group">
-          <span class="custom-control-description">Have u submitted NOC issued by the owner:</span>
-          <div class="form-group form-check-inline">
-            <input class="form-check-input" type="radio" name="n6" id="n61" value="checkedValue">Yes&nbsp;
-            <input class="form-check-input" type="radio" name="n6" id="n62" value="checkedValue">No
-          </div>
-        </div>
-        <div class="form-group">
-          <span class="custom-control-description">Are the documents submitted according to the Article 19(B): </span>
-          <div class="form-group form-check-inline">
-            <input class="form-check-input" type="radio" name="n7" id="n71" value="checkedValue">Yes&nbsp;
-            <input class="form-check-input" type="radio" name="n7" id="n72" value="checkedValue">No
-          </div>
-        </div> -->
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col px-0 pr-2">
-              <div class="btn btn-outline-primary btn-lg btn-block" (click)="navigate('prev')">Previous</div>
+              <div class="btn btn-outline-primary btn-lg btn-block disabled" *ngIf="currpage == 0" (click)="navigate('prev')">Previous</div>
+              <div class="btn btn-outline-primary btn-lg btn-block" *ngIf="currpage != 0" (click)="navigate('prev')">Previous</div>
             </div>
-            <div class="col px-0 pl-2">
+            <div class="col px-0 pl-2" *ngIf="currpage < 5">
               <div class="btn btn-outline-danger btn-lg btn-block" (click)="navigate('next')">Next</div>
+            </div>
+            <div class="col px-0 pl-2" *ngIf="currpage == 5">
+              <div class="btn btn-outline-success btn-lg btn-block" (click)="open(content)">Submit</div>
             </div>
           </div>
         </div>
@@ -233,31 +32,48 @@
 
 
 <ng-template #acc>
+  <h3 class="mb-3 text-underline">Applicant Details</h3>
   <div class="form-group">
     <label for="name">Applicant's Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+    <input [(ngModel)]="data.appname" type="text" class="form-control" id="name" placeholder="Enter name" name="name">
   </div>
   <div class="form-group">
     <label for="name">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    <input [(ngModel)]="data.email" type="email" class="form-control" id="email" placeholder="Enter email" name="email">
   </div>
   <div class="form-group">
     <label for="name">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+    <input [(ngModel)]="data.password" type="password" class="form-control" id="password" placeholder="Enter password"
+      name="password">
   </div>
 </ng-template>
 
 <ng-template #comp>
+  <h3 class="mb-3 text-underline">Organization Details</h3>
   <div class="form-check form-group">
-    <span class="custom-control-description">Status:</span><br>
-    <input type="radio" class="form-check-input px-10" name="" id="" value="checkedValue">Private Organisation<br>
-    <input type="radio" class="form-check-input" name="" id="" value="checkedValue">Company<br>
-    <input type="radio" class="form-check-input" name="" id="" value="checkedValue">Charitable Trust<br>
-    <input type="radio" class="form-check-input" name="" id="" value="checkedValue">Others<br>
+    <span class="custom-control-description"><b>Status:</b></span> <br>
+    <div class="ml-3">
+      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="private">Private
+      Organisation <br>
+      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="company">Company
+      <br>
+      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="trust">Charitable
+      Trust <br>
+      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="others">Others
+      <br>
+    </div>
   </div>
   <div class="form-group">
     <label for="addr">Address:</label>
-    <textarea class="form-control px-10" name="addr" id="addr" rows="3"></textarea>
+    <textarea [(ngModel)]="data.address" class="form-control px-10" name="addr" id="addr" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="adph">Phone No.:</label>
+    <input [(ngModel)]="data.phoneno" type="text" class="form-control" name="adph" id="adph" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="adf">Fax No.:</label>
+    <input [(ngModel)]="data.faxno" type="text" class="form-control" name="adf" id="adf" placeholder="">
   </div>
 </ng-template>
 
@@ -265,32 +81,31 @@
   <div class="form-check form-group">
     <span class="custom-control-description">Medium used for the advertisement:</span><br>
     <div class="form-group">
-      <input class="form-check-input" type="radio" name="n1" id="n11" value="checkedValue"> Broadcasted<br>
-      <input class="form-check-input" type="radio" name="n1" id="n12" value="checkedValue"> Not Broadcasted<br>
+      <input [(ngModel)]="data.medium" class="form-check-input" type="radio" name="meduium" value="broadcasted">
+      Broadcasted<br>
+      <input [(ngModel)]="data.medium" class="form-check-input" type="radio" name="medium" value="not_broadcasted">
+      Not Broadcasted<br>
     </div>
   </div>
   <div class="form-group form-check">
     <span class="custom-control-description">Type of advertisement</span><br>
     <div class="form-group">
-      <input class="form-check-input" type="radio" name="n2" id="n21" value="checkedValue"> Temporary<br>
-      <input class="form-check-input" type="radio" name="n2" id="n22" value="checkedValue"> Not Temporary<br>
+      <input [(ngModel)]="data.type" class="form-check-input" type="radio" name="n2" value="temp"> Temporary<br>
+      <input [(ngModel)]="data.type" class="form-check-input" type="radio" name="n2" value="not_temp"> Not Temporary<br>
     </div>
   </div>
   <div class="form-group">
-    <label for="f1">Type of Advertisement</label>
-    <input type="text" name="f1" id="f1" class="form-control" placeholder="">
-  </div>
-  <div class="form-group">
-    <span class="custom-control-description">Have u applied for the</span>
-    <div class="form-group form-check-inline">
-      <input class="form-check-input" type="radio" name="n3" id="n31" value="checkedValue"> Yes&nbsp;
-      <input class="form-check-input" type="radio" name="n3" id="n32" value="checkedValue"> No
+    <span class="custom-control-description">Have u applied for the advertisement symbol/sign:</span>
+    <div class="form-group form-check-inline">&nbsp;
+      <input [(ngModel)]="data.symbol" class="form-check-input" type="radio" name="n3" id="n31" value="symbol">
+      Yes&nbsp;
+      <input [(ngModel)]="data.symbol" class="form-check-input" type="radio" name="n3" id="n32" value="no_symbol">
+      No
     </div>
-    <br>
   </div>
-  <label class="custom-control-description">If yes,</label><br>
+  <label class="custom-control-description">If yes,</label>
   <div class="form-group">
-    <label for="f1">Type of Advertisement</label>
+    <label for="f1">Type(can be subtype) of Advertisement</label>
     <input type="text" name="f1" id="f1" class="form-control" placeholder="">
   </div>
 </ng-template>
@@ -298,77 +113,268 @@
 <ng-template #chooseDates>
   <div class="form-group form-inline">
     <label for="to">To:</label>&nbsp;&nbsp;
-    <input type="date" id="to" name="to" class="calendar">
+    <input [(ngModel)]="data.toDate" type="date" id="to" name="to" class="calendar">
     <label for="From">From:</label>&nbsp;&nbsp;
-    <input type="date" id="from" name="from" class="calendar">
-  </div>
-</ng-template>
-
-<ng-template #chooseLocations>
-  <div class="form-group">
-    <span class="custom-control-description">Location</span>
-    <div class="form-group form-check-inline">
-      <input class="form-check-input" type="radio" name="n4" id="n41" value="checkedValue"> Single&nbsp;
-      <input class="form-check-input" type="radio" name="n4" id="n42" value="checkedValue"> Multiple
->>>>>>> 85bfa42ff34ff0a5af9902952d53d2292be8055d
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="locNo">Location No(s).</label>
-    <textarea class="form-control" name="locNo" id="locNo" rows="3"></textarea>
+    <input [(ngModel)]="data.fromDate" type="date" id="from" name="from" class="calendar">
   </div>
 </ng-template>
 
 <ng-template #advertData>
   <div class="form-group">
-    <label for="dim"> Dimensions</label>
-    <table class="table table-1:striped table-inverse table-responsive" name="dim" id="dim">
-      <thead class="thead-inverse">
-        <tr>
-          <th>Dimensions</th>
-          <th>Square Feet</th>
-          <th>Square Metres</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td scope="row">Length</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td scope="row">Width</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td scope="row">Total Area</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td scope="row">Height</td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="form-group">
-    <label for="ad">Give the tagline/summarize version of the advertisement:</label>
-    <input type="text" class="form-control" name="ad" id="ad" placeholder="Summary">
+    <label for="ad">Give the Content of the advertisement:</label>
+    <input [(ngModel)]="data.description" type="text" class="form-control" name="ad" id="ad" placeholder="Summary">
   </div>
   <div class="form-group">
     <label for="im">Attach an image file of ur advertisement:</label>
     <input type="file" class="form-control" name="im" id="im">
   </div>
+  <div class="form-group" *ngIf="location">
+    <div>
+      <label for="street1">Address of the location:</label>
+      <input disabled type="text" name="street1" id="street1" class="form-control" [value]="this.location.address">
+    </div>
+    <div>
+      <span class="custom-control-description">Is it necessary to cut the trees:</span>
+      <div class="form-group form-check-inline">
+        <input [(ngModel)]="data.trees" class="form-check-input" type="radio" name="n5" id="n51" value="cut">
+        Yes&nbsp;
+        <input [(ngModel)]="data.trees" class="form-check-input" type="radio" name="n5" id="n52" value="nocut">
+        No
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="landOwner">Name of the Land Owner:</label>
+    <input disabled type="text" name="landOwner" id="landOwner" class="form-control" value="PMC">
+  </div>
+  <div class="form-group">
+    <span class="custom-control-description">Have u submitted NOC issued by the owner:</span>
+    <div class="form-group form-check-inline">
+      <input class="form-check-input" type="radio" name="n6" id="n61" [checked]="data.noc" (change)="data.noc = true">Yes&nbsp;
+      <input class="form-check-input" type="radio" name="n6" id="n62" [checked]="data.noc" (change)="data.noc = false">No
+    </div>
+  </div>
+  <div class="form-group">
+    <span class="custom-control-description">Are the documents submitted according to the Article 19(B): </span>
+    <div class="form-group form-check-inline">
+      <input class="form-check-input" type="radio" name="n7" id="n71" [checked]="data.a19" (change)="data.a19 = true">Yes&nbsp;
+      <input class="form-check-input" type="radio" name="n7" id="n72" [checked]="data.a19" (change)="data.a19 = false">No
+    </div>
+  </div>
+  <div class="form-group pb-3">
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" name="c1" id="c1" value="agreed" [checked]="agreed" (change)="agreed = !agreed">
+        <span style="font-size: 12px; line-height: 15px;">I have read and accepted all the
+          conditions put forward by
+          Maharashtra Municipal
+          Corporation(License and
+          Skysign Department's rules and regulations 2014). <br> If the information given by me is found to be
+          incorrect or
+          wrongful in any way, then I can be judged as guilty beofre the law and is entitled to face the punishment.</span>
+      </label>
+    </div>
+  </div>
 </ng-template>
-
-<ng-template #docs>
-
-</ng-template>
-
 
 <ng-template #docupload>
+  <h3 class="mb-3 text-underline">Upload Documents</h3>
+  <div class="table-responsive">
+    <table class="table table-inverse">
+      <thead class="thead-default">
+        <tr>
+          <th class="d-none d-md-inline-block">Sr No.</th>
+          <th>Document Name</th>
+          <th>Added/Uploaded</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">1</td>
+          <td>Form Application</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d1" id="d1">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">2</td>
+          <td>Owner Land (7/12)</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d2" id="d2">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">3</td>
+          <td>Society NOC on Society Letter Head</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d3" id="d3">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">4</td>
+          <td>Resolution of Society on Society Letter Head</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d4" id="d4">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">5</td>
+          <td>Society Light Bill</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d5" id="d5">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">6</td>
+          <td>Certificate of Structural Engineer</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d6" id="d6">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">7</td>
+          <td>Stability Certificate</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d7" id="d7">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">8</td>
+          <td>Traffic Police NOC</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d8" id="d8">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">9</td>
+          <td>Location Plan</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d9" id="d9">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">10</td>
+          <td>Site DTP proposed photo</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d10" id="d10">
+              </label>
+            </div>
+          </td>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">11</td>
+          <td>Under Taking 1</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d11" id="d11">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">12</td>
+          <td>Under taking 2</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d12" id="d12">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">13</td>
+          <td>Advertising Insurance</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d13" id="d13">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">14</td>
+          <td>Advertising size</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d14" id="d14">
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row" class="d-none d-md-inline-block">15</td>
+          <td>Rental Agreement</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-file-input" type="file" name="d15" id="d15">
+              </label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
 
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Submit booking application</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid pb-4">
+      <div class="row">
+        <div class="col">
+          <div class="btn btn-success" style="width: 100%" (click)="submit()">Confirm</div>
+        </div>
+        <div class="col">
+          <div class="btn btn-danger" style="width: 100%" (click)="modal.dismiss('Cross click')">Cancel</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ng-template>

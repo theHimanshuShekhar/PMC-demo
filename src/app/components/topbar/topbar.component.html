@@ -1,23 +1,25 @@
-<div class="container-fluid bg-white">
+<div class="container-fluid bg-white border-bottom">
   <div class="container py-1 py-md-2 text-center pointer">
     <div class="container-fluid">
       <div class="row justify-content-between">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-md-6">
           <a routerLink="home" class="text-dark">
             <img src="../../../assets/pmc.png" alt="PMC Logo" height="50px">
-            <h3 class="d-none d-md-inline-block my-0 py-0">Panvel Municipal Corporation</h3>
+            <h3 class="d-none d-md-inline-block my-0 py-0" style="line-height: 50px; vertical-align: middle">
+              Panvel Municipal Corporation
+            </h3>
           </a>
         </div>
-        <div class="col-12 col-md-6 text-center">
+        <div class="col-12 col-md-6 text-center my-2">
           <ng-container *ngIf="showuser else nouser">
             <div ngbDropdown class="d-inline-block" placement="bottom-right">
               <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-                <h5>{{user}}</h5>
+                <h5 style="font-size: 15px; display: inline;">{{user}}</h5>
               </button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <span ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <button class="dropdown-item pointer" routerLink="account">Account</button>
                 <button class="dropdown-item" (click)="logout()">Logout</button>
-              </div>
+              </span>
             </div>
           </ng-container>
         </div>
@@ -27,5 +29,5 @@
 </div>
 
 <ng-template #nouser>
-  <h5 class="my-2 test">Login/Signup</h5>
+  <h5 class="my-2" style="font-size: 20px; display: inline;">Login/Signup</h5>
 </ng-template>

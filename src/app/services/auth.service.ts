@@ -90,15 +90,15 @@ export class AuthService {
     }
   }
 
-  private emailRegister(formdata) {
-    this.afAuth.auth.createUserWithEmailAndPassword(formdata.email, formdata.password)
+  emailRegister(formdata) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(formdata.email, formdata.password)
       .then(() => {
         this.getAuthState().subscribe(user => {
           if (user) {
             const userData = {
               uid: user.uid,
               email: user.email,
-              userName: formdata.username,
+              userName: formdata.username ? formdata.username : 'username',
               password: formdata.password,
               joinDate: new Date()
             };

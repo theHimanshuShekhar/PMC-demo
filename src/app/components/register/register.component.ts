@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
     email: '',
     password: '',
     type: 'email'
-  }
+  };
 
   isTaken;
 

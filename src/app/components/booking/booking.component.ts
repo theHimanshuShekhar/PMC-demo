@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-booking',
@@ -11,27 +12,44 @@ import { DataService } from 'src/app/services/data.service';
 
 export class BookingComponent implements OnInit {
 
-  currpage = 0;
 
-  showAccountDetails = false;
-  showCompanyDetails = false;
-  showAdvertisementDetails = false;
-  showDateDetails = false;
-  showLocationDetails = false;
-  showAdvert = false;
-  showDocs = false;
+
+  currpage = 5;
 
   location;
   bookings;
   isDisabled;
 
-  fromDate;
-  toDate;
+  data = {
+    appname: '',
+    email: '',
+    password: '',
+    appstatus: '',
+    address: '',
+    phoneno: '',
+    faxno: '',
+    medium: '',
+    type: '',
+    symbol: '',
+    fromDate: null,
+    toDate: null,
+    summary: '',
+    description: '',
+    image: '',
+    trees: '',
+    location: this.location ? this.location.id : null,
+    ownername: 'PMC',
+    noc: null,
+    a19: null,
+  };
+
+  agreed = false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private modalService: NgbModal
   ) {
   }
 
@@ -49,11 +67,6 @@ export class BookingComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
-  submitForm() {
-    console.log('Add booking request to database');
-    this.router.navigateByUrl('/account');
-=======
   navigate(type) {
     switch (type) {
       case 'next':
@@ -67,6 +80,20 @@ export class BookingComponent implements OnInit {
         }
         break;
     }
->>>>>>> 85bfa42ff34ff0a5af9902952d53d2292be8055d
+  }
+
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  }
+
+  submit() {
+    if (this.data && this.location) {
+      this.getCost();
+      this.data.location = this.location.id;
+      this.dataService.submitApplication(this.data);
+    }
+  }
+  getCost() {
+    console.log(new Date(this.data.toDate));
   }
 }
