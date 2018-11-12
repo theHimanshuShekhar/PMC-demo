@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user',
@@ -11,10 +12,12 @@ export class UserComponent implements OnInit {
 
   user;
   bookings;
+  currentbooking;
 
   constructor(
     private auth: AuthService,
-    private data: DataService
+    private data: DataService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -37,8 +40,13 @@ export class UserComponent implements OnInit {
 
   filterBookings() {
     if (this.bookings) {
-      this.bookings.filter(booking => booking.status === 'pending')
+      this.bookings.filter(booking => booking.status === 'pending');
     }
+  }
+
+  open(content, booking) {
+    this.currentbooking = booking;
+    this.modalService.open(content, { size: 'lg' });
   }
 
 }

@@ -16,6 +16,10 @@ export class DataService {
     private storage: AngularFireStorage,
   ) { }
 
+  getBooking(id) {
+    return this.db.doc('bookings/' + id).valueChanges();
+  }
+
   getBookings(id) {
     return this.db.collection('bookings', ref => ref.where('id', '==', id)).valueChanges();
   }

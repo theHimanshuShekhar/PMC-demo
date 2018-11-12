@@ -22,7 +22,7 @@ export class BookingsComponent implements OnInit {
     });
   }
   getLocationName(id) {
-    let name = this.locations.filter(location => location.id === id);
+    const name = this.locations.filter(location => location.id === id);
     return name[0].name;
   }
 

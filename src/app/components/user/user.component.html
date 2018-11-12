@@ -10,6 +10,8 @@
         <dl class="row">
           <dt class="col-sm-3">Booking ID</dt>
           <dd class="col-sm-9">{{booking.bookid}}</dd>
+          <dt class="col-sm-3">Booking Date</dt>
+          <dd class="col-sm-9">{{booking.date.toDate() | date: 'dd-MMM-yyyy' }}</dd>
           <dt class="col-sm-3">Cost</dt>
           <dd class="col-sm-9">{{booking.cost}}</dd>
           <dt class="col-sm-3">Duration</dt>
@@ -17,10 +19,28 @@
             From: {{booking.from.toDate() | date: 'dd-MMM-yyyy' }} <br>
             To: {{booking.to.toDate() | date: 'dd-MMM-yyyy' }}
           </dd>
-
+          <dt class="col-sm-3">Summary</dt>
+          <dd class="col-sm-9">{{booking.summary}}</dd>
+          <dt class="col-sm-3">Status</dt>
+          <dd class="col-sm-9">
+            {{booking.status | titlecase}}
+          </dd>
+          <span *ngIf="booking.remark">
+            <dt class="col-sm-3">Remark</dt>
+            <dd class="col-sm-9">
+              {{booking.remark | titlecase}}
+            </dd>
+          </span>
         </dl>
-        {{booking | json}}
+        <div class="mr-3 btn btn-outline-info" (click)="open(application, booking)">View Application</div>
+        <div class="mr-3 btn btn-outline-danger">Cancel Application</div>
+        <div *ngIf="booking.remark" class="mr-3 btn btn-outline-primary">Resubmit Application</div>
+        <!-- <pre>{{booking | json}}</pre> -->
       </div>
     </ng-container>
   </ng-container>
 </div>
+
+<ng-template #application let-modal>
+  <app-application [bookid]="currentbooking.bookid"></app-application>
+</ng-template>
