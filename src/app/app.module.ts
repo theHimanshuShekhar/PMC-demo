@@ -10,6 +10,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 // Third party
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -84,6 +85,7 @@ import { from } from 'rxjs';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     LeafletModule.forRoot(),
     NgxSpinnerModule,
     CalendarModule.forRoot({
