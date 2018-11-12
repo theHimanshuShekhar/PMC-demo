@@ -14,7 +14,7 @@ export class BookingComponent implements OnInit {
 
 
 
-  currpage = 5;
+  currpage = 0;
 
   location;
   bookings;
