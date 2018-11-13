@@ -1,3 +1,136 @@
 <ng-container *ngIf="booking">
-  <pre>{{booking | json}}</pre>
+  <h2 class="text-center my-3">Application Overview</h2>
+  <div class="bg-white p-3 mb-2">
+    <dl class="row">
+      <dt class="col-sm-3">Booking ID</dt>
+      <dd class="col-sm-9">{{booking.bookid}}</dd>
+
+      <dt class="col-sm-3">Applicant's Name</dt>
+      <dd class="col-sm-9">{{booking.appname}}</dd>
+
+      <dt class="col-sm-3">Organizational status</dt>
+      <dd class="col-sm-9">{{booking.appstatus}}</dd>
+
+      <dt class="col-sm-3">Address</dt>
+      <dd class="col-sm-9">{{booking.address}}</dd>
+
+
+      <dt class="col-sm-3">Email</dt>
+      <dd class="col-sm-9">{{booking.email}}</dd>
+
+      <dt class="col-sm-3">Phone no.</dt>
+      <dd class="col-sm-9">{{booking.phoneno}}</dd>
+
+
+      <dt class="col-sm-3">Fax no.</dt>
+      <dd class="col-sm-9">{{booking.faxno}}</dd>
+
+
+      <dt class="col-sm-3">Advertisement type</dt>
+      <dd class="col-sm-9">{{booking.type}}</dd>
+
+
+      <dt class="col-sm-3">Medium</dt>
+      <dd class="col-sm-9">{{booking.medium}}</dd>
+
+      <dt class="col-sm-3">Owner's Name</dt>
+      <dd class="col-sm-9">{{booking.ownername}}</dd>
+
+
+      <dt class="col-sm-3">Trees</dt>
+      <dd class="col-sm-9">{{booking.trees}}</dd>
+
+
+      <dt class="col-sm-3">No Objection Certificate aquired</dt>
+      <dd class="col-sm-9">{{booking.noc}}</dd>
+
+      <dt class="col-sm-3">Booking Date</dt>
+      <dd class="col-sm-9">{{booking.date.toDate() | date: 'dd-MMM-yyyy' }}</dd>
+      <dt class="col-sm-3">Cost</dt>
+      <dd class="col-sm-9">{{booking.cost}}</dd>
+      <dt class="col-sm-3">Duration</dt>
+      <dd class="col-sm-9">
+        From: {{booking.from.toDate() | date: 'dd-MMM-yyyy' }} <br>
+        To: {{booking.to.toDate() | date: 'dd-MMM-yyyy' }}
+      </dd>
+      <dt class="col-sm-3">Summary</dt>
+      <dd class="col-sm-9">{{booking.description}}</dd>
+      <dt class="col-sm-3">Status</dt>
+      <dd class="col-sm-9">
+        {{booking.status | titlecase}}
+      </dd>
+      <span *ngIf="booking.remark">
+        <dt class="col-sm-3">Remark</dt>
+        <dd class="col-sm-9">
+          {{booking.remark | titlecase}}
+        </dd>
+      </span>
+    </dl>
+    <div class="container border my-2">
+      <h2>Image</h2>
+    </div>
+    <div class="container border my-2">
+      <h2>Documents Uploaded</h2>
+      <span *ngIf="booking.d1">
+        <dt class="col-12">Form Application</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d1">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d2">
+        <dt class="col-12">Land Owner</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d2">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d3">
+        <dt class="col-12">Society NOC on Letter Head</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d3">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d4">
+        <dt class="col-12">Resolution of Society on Letter Head</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d4">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d5">
+        <dt class="col-12">Society Light Bill</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d5">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d6">
+        <dt class="col-12">Certificate of Structural Engineer</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d6">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d7">
+        <dt class="col-12">Stability Certificate</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d7">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d8">
+        <dt class="col-12">Traffic Police NOC</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d8">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d9">
+        <dt class="col-12">Location Plan</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d9">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d10">
+        <dt class="col-12">Site DTP Proposed Photo</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d10">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d11">
+        <dt class="col-12">Undertaking 1</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d11">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d12">
+        <dt class="col-12">Undertaking 2</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d12">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d13">
+        <dt class="col-12">Advertising Insurance</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d13">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d14">
+        <dt class="col-12">Advertising size</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d14">View Document</a></dd>
+      </span>
+      <span *ngIf="booking.d14">
+        <dt class="col-12">Rental Agreement</dt>
+        <dd class="col-sm-9"><a target="_blank" [href]="booking.d14">View Document</a></dd>
+      </span>
+    </div>
+  </div>
 </ng-container>

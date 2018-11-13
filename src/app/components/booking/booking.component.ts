@@ -154,7 +154,7 @@ export class BookingComponent implements OnInit {
         if (this.d15) {
           this.dataService.pushUpload(this.d15.file, 'd15', this.data.bookingid);
         }
-      });
+      }).then(() => this.router.navigateByUrl('/account'));
     }
   }
   getCost() {
