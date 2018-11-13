@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -12,7 +13,8 @@ export class TopbarComponent implements OnInit {
 
   showuser = false;
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,17 @@ export class TopbarComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+  }
+
+  redirect(type) {
+    switch (type) {
+      case 'login':
+        this.router.navigateByUrl('/login');
+        break;
+      case 'register':
+        this.router.navigateByUrl('/register');
+        break;
+    }
   }
 
 }

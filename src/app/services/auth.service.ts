@@ -60,7 +60,7 @@ export class AuthService {
     return this.afAuth.authState;
   }
   emailLogin(email, password) {
-    this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();

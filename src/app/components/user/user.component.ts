@@ -22,8 +22,10 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.auth.getAuthState().subscribe(user => {
-      this.getUser(user.uid);
-      this.getUserBookings(user.uid);
+      if (user) {
+        this.getUser(user.uid);
+        this.getUserBookings(user.uid);
+      }
     });
   }
 

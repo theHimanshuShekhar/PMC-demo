@@ -29,5 +29,6 @@
 </div>
 
 <ng-template #nouser>
-  <h5 class="my-2" style="font-size: 20px; display: inline;">Login/Signup</h5>
+  <h5 class="my-2" style="font-size: 20px; display: inline;"><span (click)="redirect('login')">Login</span> /
+    <span (click)="redirect('register')">Signup</span></h5>
 </ng-template>

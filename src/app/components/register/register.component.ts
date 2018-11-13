@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,14 +21,15 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
 
   register() {
-    this.authService.register(this.user)
+    this.authService.emailRegister(this.user).then(() => this.router.navigateByUrl('/'));
   }
 
   async checkUsername() {
