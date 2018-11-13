@@ -2,15 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/services/auth.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  styleUrls: ['./booking.component.css'],
 })
 
 
 export class BookingComponent implements OnInit {
+
+  appname;
 
 
 
@@ -59,14 +63,18 @@ export class BookingComponent implements OnInit {
     d15: null,
   };
 
+  isLoggedIn = false;
+  isValid = false;
 
   agreed = false;
+  showLoading = false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private dataService: DataService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private auth: AuthService
   ) {
   }
 
@@ -82,20 +90,47 @@ export class BookingComponent implements OnInit {
         this.router.navigate(['/']);
       }
     });
+    this.auth.getAuthState().subscribe(user => {
+      if (user) {
+        this.isLoggedIn = true;
+        this.currpage = 1;
+        this.data.email = user.email;
+        // @ts-ignore
+        this.dataService.getUser(user.uid).subscribe(userdata => this.data.appname = userdata.userName);
+      }
+    });
   }
 
   navigate(type) {
-    switch (type) {
-      case 'next':
-        if (this.currpage < 5) {
-          this.currpage++;
-        }
-        break;
-      case 'prev':
-        if (this.currpage > 0) {
-          this.currpage--;
-        }
-        break;
+    if (!this.isLoggedIn) {
+      switch (type) {
+        case 'next':
+          if (this.currpage < 5) {
+            this.currpage++;
+          }
+          break;
+        case 'prev':
+          if (this.currpage > 0) {
+            this.currpage--;
+          }
+          break;
+      }
+    } else {
+      switch (type) {
+        case 'next':
+          if (this.currpage < 4) {
+            this.currpage++;
+          }
+          if (this.currpage === 4 && this.agreed) {
+            this.currpage++;
+          }
+          break;
+        case 'prev':
+          if (this.currpage > 1) {
+            this.currpage--;
+          }
+          break;
+      }
     }
   }
 
@@ -105,10 +140,19 @@ export class BookingComponent implements OnInit {
 
   submit() {
     if (this.data && this.location) {
-      this.getCost();
-      this.data.location = this.location.id;
-      this.data.bookingid = this.dataService.createID();
-      this.dataService.submitApplication(this.data);
+      if (this.data.appname && this.data.email && this.data.address
+        && this.data.appstatus && this.data.address && this.data.medium
+        && this.data.type && this.data.toDate && this.data.fromDate && this.data.image && this.data.description) {
+        this.getCost();
+        this.data.location = this.location.id;
+        this.data.bookingid = this.dataService.createID();
+        this.dataService.submitApplication(this.data);
+        this.showLoading = true;
+        this.modalService.dismissAll();
+        this.isValid = true;
+      } else {
+        this.isValid = false;
+      }
     }
   }
   getCost() {

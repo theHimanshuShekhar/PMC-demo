@@ -1,31 +1,31 @@
-<div class="container p-0">
+<div class="container p-0" *ngIf="!showLoading else Loading">
   <div class="form-container bg-white p-0 p-md-3 my-0 my-md-3">
     <div class="col main-login main-center">
-      <form>
-        <div style="min-height: 450px">
+      <div style="min-height: 450px">
+        <form>
           <ng-container *ngIf="currpage !== 0 else acc"></ng-container>
           <ng-container *ngIf="currpage !== 1 else comp"></ng-container>
           <ng-container *ngIf="currpage !== 2 else advert"></ng-container>
           <ng-container *ngIf="currpage !== 3 else chooseDates"></ng-container>
           <ng-container *ngIf="currpage !== 4 else advertData"></ng-container>
           <ng-container *ngIf="currpage !== 5 else docupload"></ng-container>
-        </div>
+        </form>
+      </div>
 
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col px-0 pr-2">
-              <div class="btn btn-outline-primary btn-lg btn-block disabled" *ngIf="currpage == 0" (click)="navigate('prev')">Previous</div>
-              <div class="btn btn-outline-primary btn-lg btn-block" *ngIf="currpage != 0" (click)="navigate('prev')">Previous</div>
-            </div>
-            <div class="col px-0 pl-2" *ngIf="currpage < 5">
-              <div class="btn btn-outline-danger btn-lg btn-block" (click)="navigate('next')">Next</div>
-            </div>
-            <div class="col px-0 pl-2" *ngIf="currpage == 5">
-              <div class="btn btn-outline-success btn-lg btn-block" (click)="open(content)">Submit</div>
-            </div>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col px-0 pr-2">
+            <div class="btn btn-outline-primary btn-lg btn-block disabled" *ngIf="currpage == 0" (click)="navigate('prev')">Previous</div>
+            <div class="btn btn-outline-primary btn-lg btn-block" *ngIf="currpage != 0" (click)="navigate('prev')">Previous</div>
+          </div>
+          <div class="col px-0 pl-2" *ngIf="currpage < 5">
+            <button class="btn btn-outline-danger btn-lg btn-block" (click)="navigate('next')">Next</button>
+          </div>
+          <div class="col px-0 pl-2" *ngIf="currpage == 5">
+            <div class="btn btn-outline-success btn-lg btn-block" (click)="open(content)">Submit</div>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>
@@ -35,45 +35,92 @@
   <h3 class="mb-3 text-underline">Applicant Details</h3>
   <div class="form-group">
     <label for="name">Applicant's Name</label>
-    <input [(ngModel)]="data.appname" type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+    <input [(ngModel)]="data.appname" type="text" class="form-control" id="name" placeholder="Enter name" name="name"
+      required minlength="4" #appname="ngModel">
+    <div *ngIf="appname.invalid && (appname.dirty || appname.touched)" class="alert alert-danger">
+      <div *ngIf="appname.errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="appname.errors.minlength">
+        Name must be at least 4 characters long.
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Email</label>
-    <input [(ngModel)]="data.email" type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    <input [(ngModel)]="data.email" type="email" class="form-control" id="email" placeholder="Enter email" name="email"
+      required minlength="4" #email="ngModel">
+  </div>
+  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+    <div *ngIf="email.errors.required">
+      Email is required.
+    </div>
+    <div *ngIf="email.errors.minlength">
+      Email must be at least 8 characters long.
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Password</label>
     <input [(ngModel)]="data.password" type="password" class="form-control" id="password" placeholder="Enter password"
-      name="password">
+      name="password" required minlength="6" #pass="ngModel">
+  </div>
+  <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="alert alert-danger">
+    <div *ngIf="pass.errors.required">
+      Password is required.
+    </div>
+    <div *ngIf="pass.errors.minlength">
+      Password must be at least 8 characters long.
+    </div>
   </div>
 </ng-template>
 
 <ng-template #comp>
+
   <h3 class="mb-3 text-underline">Organization Details</h3>
   <div class="form-check form-group">
     <span class="custom-control-description"><b>Status:</b></span> <br>
     <div class="ml-3">
-      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="private">Private
+      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="private"
+        #orgstatus="ngModel" required>Private
       Organisation <br>
-      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="company">Company
+      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="company"
+        #orgstatus="ngModel" required>Company
       <br>
-      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="trust">Charitable
+      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="trust"
+        #orgstatus="ngModel" required>Charitable
       Trust <br>
-      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="others">Others
+      <input [(ngModel)]="data.appstatus" type="radio" class="form-check-input" name="orgstatus" id="" value="others"
+        #orgstatus="ngModel" required>Others
       <br>
+    </div>
+    <div *ngIf="orgstatus && orgstatus.invalid" class="alert alert-danger">
+      <div *ngIf="orgstatus.errors.required">
+        Status is required.
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="addr">Address:</label>
-    <textarea [(ngModel)]="data.address" class="form-control px-10" name="addr" id="addr" rows="3"></textarea>
+    <textarea [(ngModel)]="data.address" class="form-control px-10" name="addr" id="addr" rows="3" #address="ngModel"
+      required></textarea>
+  </div>
+  <div *ngIf="address && address.invalid && (address.dirty || address.touched)" class="alert alert-danger">
+    <div *ngIf="address.errors.required">
+      Address is required.
+    </div>
   </div>
   <div class="form-group">
     <label for="adph">Phone No.:</label>
-    <input [(ngModel)]="data.phoneno" type="text" class="form-control" name="adph" id="adph" placeholder="">
-  </div>
-  <div class="form-group">
-    <label for="adf">Fax No.:</label>
-    <input [(ngModel)]="data.faxno" type="text" class="form-control" name="adf" id="adf" placeholder="">
+    <input [(ngModel)]="data.phoneno" type="tel" class="form-control" name="adph" id="adph" #phoneno="ngModel" required
+      pattern="[0-9]{10}">
+    <div *ngIf="phoneno.invalid && (phoneno.dirty || phoneno.touched)" class="alert alert-danger">
+      <div *ngIf="phoneno.errors.required">
+        Phone number is required.
+      </div>
+      <div *ngIf="phoneno.errors.pattern">
+        Phone number is invalid.
+      </div>
+    </div>
   </div>
 </ng-template>
 
@@ -81,26 +128,46 @@
   <div class="form-check form-group">
     <span class="custom-control-description">Medium used for the advertisement:</span><br>
     <div class="form-group">
-      <input [(ngModel)]="data.medium" class="form-check-input" type="radio" name="meduium" value="broadcasted">
+      <input [(ngModel)]="data.medium" class="form-check-input" type="radio" name="meduium" value="broadcasted" #medium="ngModel"
+        required>
       Broadcasted<br>
-      <input [(ngModel)]="data.medium" class="form-check-input" type="radio" name="medium" value="not_broadcasted">
+      <input [(ngModel)]="data.medium" class="form-check-input" type="radio" name="medium" value="not_broadcasted"
+        #medium="ngModel" required>
       Not Broadcasted<br>
+    </div>
+  </div>
+  <div *ngIf="medium && medium.invalid&& (medium.dirty || medium.touched)" class="alert alert-danger">
+    <div *ngIf="medium.errors.required">
+      Medium is required.
     </div>
   </div>
   <div class="form-group form-check">
     <span class="custom-control-description">Type of advertisement</span><br>
     <div class="form-group">
-      <input [(ngModel)]="data.type" class="form-check-input" type="radio" name="n2" value="temp"> Temporary<br>
-      <input [(ngModel)]="data.type" class="form-check-input" type="radio" name="n2" value="not_temp"> Not Temporary<br>
+      <input [(ngModel)]="data.type" class="form-check-input" type="radio" name="n2" value="temp" #type="ngModel"
+        required> Temporary<br>
+      <input [(ngModel)]="data.type" class="form-check-input" type="radio" name="n2" value="not_temp" #type="ngModel"
+        required> Not Temporary<br>
+    </div>
+  </div>
+  <div *ngIf="type && type.invalid&& (type.dirty || type.touched)" class="alert alert-danger">
+    <div *ngIf="medium.errors.required">
+      Medium is required.
     </div>
   </div>
   <div class="form-group">
     <span class="custom-control-description">Have u applied for the advertisement symbol/sign:</span>
     <div class="form-group form-check-inline">&nbsp;
-      <input [(ngModel)]="data.symbol" class="form-check-input" type="radio" name="n3" id="n31" value="symbol">
+      <input [(ngModel)]="data.symbol" class="form-check-input" type="radio" name="n3" id="n31" value="symbol" #symbol="ngModel"
+        required>
       Yes&nbsp;
-      <input [(ngModel)]="data.symbol" class="form-check-input" type="radio" name="n3" id="n32" value="no_symbol">
+      <input [(ngModel)]="data.symbol" class="form-check-input" type="radio" name="n3" id="n32" symbol="no_symbol">
       No
+    </div>
+  </div>
+  <div *ngIf="symbol && symbol.invalid&& (symbol.dirty || symbol.touched)" class="alert alert-danger">
+    <div *ngIf="symbol.errors.required">
+      Symbol is required.
     </div>
   </div>
   <label class="custom-control-description">If yes,</label>
@@ -126,7 +193,10 @@
   </div>
   <div class="form-group">
     <label for="im">Attach an image file of ur advertisement:</label>
-    <input type="file" class="form-control" name="im" id="im" (change)="processDoc($event,'image')">
+    <input type="file" class="form-control" name="im" id="im" (change)="processDoc($event,'image')" required accept="image/jpeg, image/png">
+    <div *ngIf="!data.image " class="alert alert-danger">
+      Image is required.
+    </div>
   </div>
   <div class="form-group" *ngIf="location">
     <div>
@@ -150,15 +220,15 @@
   <div class="form-group">
     <span class="custom-control-description">Have u submitted NOC issued by the owner:</span>
     <div class="form-group form-check-inline">
-      <input class="form-check-input" type="radio" name="n6" id="n61" [checked]="data.noc" (change)="data.noc = true">Yes&nbsp;
-      <input class="form-check-input" type="radio" name="n6" id="n62" [checked]="data.noc" (change)="data.noc = false">No
+      <input class="form-check-input" type="radio" name="n6" id="n61" (change)="data.noc = true">Yes&nbsp;
+      <input class="form-check-input" type="radio" name="n6" id="n62" (change)="data.noc = false">No
     </div>
   </div>
   <div class="form-group">
     <span class="custom-control-description">Are the documents submitted according to the Article 19(B): </span>
     <div class="form-group form-check-inline">
-      <input class="form-check-input" type="radio" name="n7" id="n71" [checked]="data.a19" (change)="data.a19 = true">Yes&nbsp;
-      <input class="form-check-input" type="radio" name="n7" id="n72" [checked]="data.a19" (change)="data.a19 = false">No
+      <input class="form-check-input" type="radio" name="n7" id="n71" (change)="data.a19 = true">Yes&nbsp;
+      <input class="form-check-input" type="radio" name="n7" id="n72" (change)="data.a19 = false">No
     </div>
   </div>
   <div class="form-group pb-3">
@@ -173,6 +243,9 @@
           incorrect or
           wrongful in any way, then I can be judged as guilty beofre the law and is entitled to face the punishment.</span>
       </label>
+    </div>
+    <div *ngIf="!agreed" class="alert alert-danger">
+      Please accept the agreement before proceeding.
     </div>
   </div>
 </ng-template>
@@ -368,6 +441,9 @@
   </div>
   <div class="modal-body">
     <div class="container-fluid pb-4">
+      <div *ngIf="!isValid" class="alert alert-danger">
+        Form is incomplete! <br> Please fill all the required fields and submit.
+      </div>
       <div class="row">
         <div class="col">
           <div class="btn btn-success" style="width: 100%" (click)="submit()">Confirm</div>
@@ -378,4 +454,8 @@
       </div>
     </div>
   </div>
+</ng-template>
+
+<ng-template #Loading>
+  <app-spinner></app-spinner>
 </ng-template>

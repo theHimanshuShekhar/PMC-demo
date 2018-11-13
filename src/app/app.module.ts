@@ -47,7 +47,6 @@ import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { OrderComponent } from './components/order/order.component';
 import { MapComponent } from './components/map/map.component';
-import { from } from 'rxjs';
 import { ApplicationComponent } from './components/application/application.component';
 
 @NgModule({
