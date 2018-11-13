@@ -126,7 +126,7 @@
   </div>
   <div class="form-group">
     <label for="im">Attach an image file of ur advertisement:</label>
-    <input type="file" class="form-control" name="im" id="im">
+    <input type="file" class="form-control" name="im" id="im" (change)="processDoc($event,'image')">
   </div>
   <div class="form-group" *ngIf="location">
     <div>

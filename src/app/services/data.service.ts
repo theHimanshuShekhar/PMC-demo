@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class DataService {
     private db: AngularFirestore,
     private auth: AuthService,
     private storage: AngularFireStorage,
+    private router: Router
   ) { }
 
   getBooking(id) {
@@ -62,13 +64,9 @@ export class DataService {
       password: data.password,
       type: 'email'
     };
-    return this.auth.emailRegister(userdata).catch((err) => {
-      if (err.code === 'auth/email-already-in-use') {
-        console.log(err.code);
-      }
-    }).then(() => {
-      console.log('user created');
-      this.auth.getAuthState().subscribe(user => {
+    this.auth.getAuthState().subscribe(loggeduser => {
+      if (loggeduser) {
+        console.log('User logged in');
         const bookdata = {
           appname: data.appname,
           email: data.email,
@@ -83,20 +81,159 @@ export class DataService {
           to: new Date(data.toDate),
           summary: data.summary,
           description: data.description,
-          image: data.image,
+          image: '',
           trees: data.trees,
           id: data.location,
           ownername: 'PMC',
           noc: data.noc,
           a19: data.a19,
-          cost: 20000, // fix cost dynamic
+          cost: 18000 * Math.floor(Math.random() * 10) + 1,
           status: 'pending',
           bookid: data.bookingid ? data.bookingid : this.db.createId(),
           date: new Date(),
-          uid: user.uid
+          uid: loggeduser.uid
         };
-        this.db.doc('bookings/' + data.bookingid).set(bookdata);
-      });
+        return this.db.doc('bookings/' + data.bookingid).set(bookdata)
+          .then(() => {
+            console.log('Uploads called');
+            if (data.image) {
+              this.pushUpload(data.image.file, 'image', data.bookingid);
+            }
+            if (data.d1) {
+              this.pushUpload(data.d1.file, 'd1', data.bookingid);
+            }
+            if (data.d2) {
+              this.pushUpload(data.d2.file, 'd2', data.bookingid);
+            }
+            if (data.d3) {
+              this.pushUpload(data.d3.file, 'd3', data.bookingid);
+            }
+            if (data.d4) {
+              this.pushUpload(data.d4.file, 'd4', data.bookingid);
+            }
+            if (data.d5) {
+              this.pushUpload(data.d5.file, 'd5', data.bookingid);
+            }
+            if (data.d6) {
+              this.pushUpload(data.d6.file, 'd6', data.bookingid);
+            }
+            if (data.d7) {
+              this.pushUpload(data.d7.file, 'd7', data.bookingid);
+            }
+            if (data.d8) {
+              this.pushUpload(data.d8.file, 'd8', data.bookingid);
+            }
+            if (data.d9) {
+              this.pushUpload(data.d9.file, 'd9', data.bookingid);
+            }
+            if (data.d10) {
+              this.pushUpload(data.d10.file, 'd10', data.bookingid);
+            }
+            if (data.d11) {
+              this.pushUpload(data.d11.file, 'd11', data.bookingid);
+            }
+            if (data.d12) {
+              this.pushUpload(data.d12.file, 'd12', data.bookingid);
+            }
+            if (data.d13) {
+              this.pushUpload(data.d13.file, 'd13', data.bookingid);
+            }
+            if (data.d14) {
+              this.pushUpload(data.d15.file, 'd14', data.bookingid);
+            }
+            if (data.d15) {
+              this.pushUpload(data.d15.file, 'd15', data.bookingid);
+            }
+          }).then(() => this.router.navigateByUrl('/account'));
+      } else {
+        return this.auth.emailRegister(userdata).catch((err) => {
+          if (err.code === 'auth/email-already-in-use') {
+            console.log(err.code);
+          }
+        }).then(() => {
+          console.log('user created');
+          this.auth.getAuthState().subscribe(user => {
+            const bookdata = {
+              appname: data.appname,
+              email: data.email,
+              appstatus: data.appstatus,
+              address: data.address,
+              phoneno: data.phoneno,
+              faxno: data.faxno,
+              medium: data.medium,
+              type: data.type,
+              symbol: data.symbol,
+              from: new Date(data.fromDate),
+              to: new Date(data.toDate),
+              summary: data.summary,
+              description: data.description,
+              image: '',
+              trees: data.trees,
+              id: data.location,
+              ownername: 'PMC',
+              noc: data.noc,
+              a19: data.a19,
+              cost: 18000 * Math.floor(Math.random() * 10) + 1,
+              status: 'pending',
+              bookid: data.bookingid ? data.bookingid : this.db.createId(),
+              date: new Date(),
+              uid: loggeduser.uid
+            };
+            this.db.doc('bookings/' + data.bookingid).set(bookdata)
+              .then(() => {
+                console.log('Uploads called');
+                if (data.image) {
+                  this.pushUpload(data.image.file, 'image', data.bookingid);
+                }
+                if (data.d1) {
+                  this.pushUpload(data.d1.file, 'd1', data.bookingid);
+                }
+                if (data.d2) {
+                  this.pushUpload(data.d2.file, 'd2', data.bookingid);
+                }
+                if (data.d3) {
+                  this.pushUpload(data.d3.file, 'd3', data.bookingid);
+                }
+                if (data.d4) {
+                  this.pushUpload(data.d4.file, 'd4', data.bookingid);
+                }
+                if (data.d5) {
+                  this.pushUpload(data.d5.file, 'd5', data.bookingid);
+                }
+                if (data.d6) {
+                  this.pushUpload(data.d6.file, 'd6', data.bookingid);
+                }
+                if (data.d7) {
+                  this.pushUpload(data.d7.file, 'd7', data.bookingid);
+                }
+                if (data.d8) {
+                  this.pushUpload(data.d8.file, 'd8', data.bookingid);
+                }
+                if (data.d9) {
+                  this.pushUpload(data.d9.file, 'd9', data.bookingid);
+                }
+                if (data.d10) {
+                  this.pushUpload(data.d10.file, 'd10', data.bookingid);
+                }
+                if (data.d11) {
+                  this.pushUpload(data.d11.file, 'd11', data.bookingid);
+                }
+                if (data.d12) {
+                  this.pushUpload(data.d12.file, 'd12', data.bookingid);
+                }
+                if (data.d13) {
+                  this.pushUpload(data.d13.file, 'd13', data.bookingid);
+                }
+                if (data.d14) {
+                  this.pushUpload(data.d15.file, 'd14', data.bookingid);
+                }
+                if (data.d15) {
+                  this.pushUpload(data.d15.file, 'd15', data.bookingid);
+                }
+              }).then(() => this.router.navigateByUrl('/account'));
+          });
+        });
+      }
     });
   }
 
@@ -115,6 +252,11 @@ export class DataService {
 
   updateDocURL(url, bookid, name) {
     switch (name) {
+      case 'image':
+        this.db.doc('bookings/' + bookid).update({
+          image: url
+        });
+        break;
       case 'd1':
         this.db.doc('bookings/' + bookid).update({
           d1: url

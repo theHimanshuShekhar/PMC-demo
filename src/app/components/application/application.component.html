@@ -66,8 +66,9 @@
         </dd>
       </span>
     </dl>
-    <div class="container border my-2">
+    <div class="container border my-2 py-2" *ngIf="booking.image">
       <h2>Image</h2>
+      <img [src]="booking.image" style="max-width: 100%">
     </div>
     <div class="container border my-2">
       <h2>Documents Uploaded</h2>
