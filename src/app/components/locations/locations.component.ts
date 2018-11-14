@@ -50,7 +50,15 @@ export class LocationsComponent implements OnInit {
   }
 
   addLocation() {
-    this.dataService.addLocation(this.data);
+    this.dataService.addLocation(this.data).then(() => this.data = {
+      name: null,
+      address: null,
+      price: null,
+      latlong: {
+        _lat: null,
+        _long: null
+      }
+    });
   }
 
   openAdd(add) {

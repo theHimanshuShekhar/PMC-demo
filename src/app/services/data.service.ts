@@ -74,7 +74,7 @@ export class DataService {
       price: location.price,
       latlong: new firebase.firestore.GeoPoint(parseFloat(location.latlong._lat), parseFloat(location.latlong._long))
     };
-    this.db.doc('locations/' + location.id).set(data);
+    return this.db.doc('locations/' + location.id).set(data);
   }
 
   getAllBookings() {
