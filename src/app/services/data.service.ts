@@ -67,14 +67,15 @@ export class DataService {
   }
 
   addLocation(location) {
+    const id = this.createID()
     const data = {
       address: location.address,
-      id: this.createID(),
+      id: id,
       name: location.name,
       price: location.price,
       latlong: new firebase.firestore.GeoPoint(parseFloat(location.latlong._lat), parseFloat(location.latlong._long))
     };
-    return this.db.doc('locations/' + location.id).set(data);
+    return this.db.doc('locations/' + id).set(data);
   }
 
   getAllBookings() {
