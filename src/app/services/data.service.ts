@@ -18,6 +18,18 @@ export class DataService {
     private router: Router
   ) { }
 
+  toDate;
+  fromDate;
+
+  setDate(to, from) {
+    this.toDate = to;
+    this.fromDate = from;
+  }
+
+  getDate() {
+    return { to: this.toDate, from: this.fromDate };
+  }
+
   getBooking(id) {
     return this.db.doc('bookings/' + id).valueChanges();
   }

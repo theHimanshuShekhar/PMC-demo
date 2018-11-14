@@ -63,6 +63,8 @@ export class BookingComponent implements OnInit {
     d15: null,
   };
 
+  min = new Date(new Date().getTime() + (5 * 24 * 60 * 60 * 1000));
+
   isLoggedIn = false;
   isValid = false;
 
@@ -77,7 +79,16 @@ export class BookingComponent implements OnInit {
     private auth: AuthService
   ) {
   }
-
+  getDates() {
+    const dates = this.dataService.getDate();
+    this.data.toDate = dates.to;
+    this.data.fromDate = dates.from;
+  }
+  public myFilter = (d: Date): boolean => {
+    const day = d.getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

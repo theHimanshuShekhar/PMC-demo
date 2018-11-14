@@ -180,12 +180,17 @@
 </ng-template>
 
 <ng-template #chooseDates>
-  <div class="form-group form-inline">
-    <label for="to">To:</label>&nbsp;&nbsp;
-    <input [(ngModel)]="data.toDate" type="date" id="to" name="to" class="calendar">
-    <label for="From">From:</label>&nbsp;&nbsp;
-    <input [(ngModel)]="data.fromDate" type="date" id="from" name="from" class="calendar">
-  </div>
+  <dl>
+    <div class="row">
+      <dt class="col-2">From:</dt>
+      <dd class="col-10">{{data.fromDate | date: 'dd-MMM-yyyy' }}</dd><br>
+      <dt class="col-2">To:</dt>
+      <dd class="col-10">{{data.toDate | date: 'dd-MMM-yyyy' }}</dd>
+    </div>
+  </dl>
+  <ng-container *ngIf="bookings">
+    <app-calendar [bookings]="bookings" (getDatesFromService)="getDates()"></app-calendar>
+  </ng-container>
 </ng-template>
 
 <ng-template #advertData>

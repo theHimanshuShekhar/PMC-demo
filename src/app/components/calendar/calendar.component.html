@@ -20,7 +20,7 @@
   <br>
   <div [ngSwitch]="view">
     <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [cellTemplate]="customTemplate" [viewDate]="viewDate"
-      [events]="events" [refresh]="refresh">
+      [events]="events" [refresh]="refresh" (dayClicked)="dayCheck($event.day.date)" (beforeViewRender)="beforeMonthViewRender($event)">
     </mwl-calendar-month-view>
   </div>
 
