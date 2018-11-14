@@ -31,9 +31,16 @@ export class OrdersComponent implements OnInit {
   }
   getBookings() {
     this.dataService.getAllBookings().subscribe(bookings => {
+      // this.bookings = bookings.map((booking) => {
+      //   // @ts-ignore
+      //   if (booking.status === 'pending') {
+      //     return booking;
+      //   }
+      // });
       this.bookings = bookings;
     });
   }
+
 
   getLocation(id) {
     return 'Location Name';

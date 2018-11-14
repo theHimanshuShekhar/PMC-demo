@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +63,18 @@ export class DataService {
   }
 
   setLocation(location) {
-    this.db.doc('locations/' + location.id).set(location);
+    this.db.doc('locations/' + location.id).update(location);
+  }
+
+  addLocation(location) {
+    const data = {
+      address: location.address,
+      id: this.createID(),
+      name: location.name,
+      price: location.price,
+      latlong: new firebase.firestore.GeoPoint(parseFloat(location.latlong._lat), parseFloat(location.latlong._long))
+    };
+    this.db.doc('locations/' + location.id).set(data);
   }
 
   getAllBookings() {

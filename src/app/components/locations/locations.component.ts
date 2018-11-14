@@ -20,6 +20,16 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LocationsComponent implements OnInit {
 
+  data = {
+    name: null,
+    address: null,
+    price: null,
+    latlong: {
+      _lat: null,
+      _long: null
+    }
+  };
+
   closeResult;
   selected;
   locations;
@@ -36,6 +46,18 @@ export class LocationsComponent implements OnInit {
   getLocations() {
     this.dataService.getLocations().subscribe(locations => {
       this.locations = locations;
+    });
+  }
+
+  addLocation() {
+    this.dataService.addLocation(this.data);
+  }
+
+  openAdd(add) {
+    this.modalService.open(add, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 

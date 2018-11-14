@@ -1,4 +1,7 @@
 <div class="container-fluid px-0">
+  <div class="btn btn-success mb-3" style="width: 100%" (click)="openAdd(add)">
+    <h4>Add Location</h4>
+  </div>
   <ng-container *ngIf="locations">
     <div class="bg-white p-3 mb-1" *ngFor="let location of locations" [@popIn]>
       <div class="container-fluid">
@@ -18,6 +21,42 @@
     </div>
   </ng-container>
 </div>
+
+<ng-template #add let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Location</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="lName">Name</label>
+        <input [(ngModel)]="data.name" type="text" class="form-control" name="lName" id="lName" aria-describedby="emailHelp"
+          placeholder="Enter location name">
+      </div>
+      <div class="form-group">
+        <label for="lAddress">Address</label>
+        <textarea [(ngModel)]="data.address" type="text" class="form-control" name="lAddress" id="lAddress" placeholder="Address"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="lPrice">Price</label>
+        <input [(ngModel)]="data.price" type="text" class="form-control" name="lPrice" id="lPrice" placeholder="Price">
+      </div>
+
+      <div class="form-group">
+        <label for="lPrice">Latitude and Longitude</label>
+        <input [(ngModel)]="data.latlong._lat" type="text" class="form-control" name="lLat" id="lLat" placeholder="Latitude">
+        <input [(ngModel)]="data.latlong._long" type="text" class="form-control" name="lLong" id="lLong" placeholder="Longitude">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" style="width: 100%" (click)="addLocation(); modal.close('Save click')">Add
+      Location</button>
+  </div>
+</ng-template>
 
 <ng-template #content let-modal>
   <div class="modal-header">

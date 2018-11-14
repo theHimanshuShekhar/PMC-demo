@@ -133,7 +133,7 @@
         <dd class="col-sm-9"><a target="_blank" [href]="booking.d14">View Document</a></dd>
       </span>
     </div>
-    <div class="container-fluid" *ngIf="path === 'dashboard'">
+    <div class="container-fluid" *ngIf="path === 'dashboard' && booking.status === 'pending'">
       <div class="row text-center">
         <div class="col">
           <div class="btn btn-success py-2 px-3 mx-2" style="width: 100%" (click)="process('approve')">Approve</div>
