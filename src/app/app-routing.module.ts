@@ -11,6 +11,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
 import { UserComponent } from './components/user/user.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: 'account',
     component: UserComponent
+  },
+  {
+    path: 'payment',
+    component: PaymentComponent
   },
   {
     path: '**',

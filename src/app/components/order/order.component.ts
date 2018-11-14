@@ -37,6 +37,10 @@ export class OrderComponent implements OnInit {
     this.dataService.getLocation(id).subscribe(location => this.location = location);
   }
 
+  close() {
+    this.modalService.dismissAll();
+  }
+
   open(content) {
     this.modalService.open(content, { size: 'lg' });
   }

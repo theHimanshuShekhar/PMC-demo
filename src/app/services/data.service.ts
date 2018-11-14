@@ -26,6 +26,14 @@ export class DataService {
     this.fromDate = from;
   }
 
+  update(bookid, data) {
+    return this.db.doc('bookings/' + bookid).update(data);
+  }
+
+  cancel(bookid) {
+    return this.db.doc('bookings/' + bookid).delete();
+  }
+
   getDate() {
     return { to: this.toDate, from: this.fromDate };
   }
@@ -54,7 +62,7 @@ export class DataService {
   }
 
   getAllBookings() {
-    return this.db.collection('bookings').valueChanges();
+    return this.db.collection('bookings', ref => ref.orderBy('date', 'desc')).valueChanges();
   }
 
   getUser(uid) {

@@ -46,6 +46,14 @@ export class UserComponent implements OnInit {
     }
   }
 
+  cancel(bookid) {
+    this.data.cancel(bookid);
+  }
+
+  close() {
+    this.modalService.dismissAll();
+  }
+
   open(content, booking) {
     this.currentbooking = booking;
     this.modalService.open(content, { size: 'lg' });

@@ -133,5 +133,15 @@
         <dd class="col-sm-9"><a target="_blank" [href]="booking.d14">View Document</a></dd>
       </span>
     </div>
+    <div class="container-fluid" *ngIf="path === 'dashboard'">
+      <div class="row text-center">
+        <div class="col">
+          <div class="btn btn-success py-2 px-3 mx-2" style="width: 100%" (click)="process('approve')">Approve</div>
+        </div>
+        <div class="col">
+          <div class="btn btn-danger py-2 px-3 mx-2" style="width: 100%" (click)="process('reject')">Reject</div>
+        </div>
+      </div>
+    </div>
   </div>
 </ng-container>

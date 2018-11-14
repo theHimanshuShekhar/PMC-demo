@@ -48,6 +48,7 @@ import { UsersComponent } from './components/users/users.component';
 import { OrderComponent } from './components/order/order.component';
 import { MapComponent } from './components/map/map.component';
 import { ApplicationComponent } from './components/application/application.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { ApplicationComponent } from './components/application/application.compo
     OrderComponent,
     MapComponent,
     ApplicationComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,7 @@
 
 
 <ng-template #app let-modal>
-  <app-application [bookid]="booking.bookid"></app-application>
+  <app-application [bookid]="booking.bookid" (closeModal)="close()"></app-application>
 </ng-template>
 
 
