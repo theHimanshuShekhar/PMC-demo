@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-image-carousel',
@@ -7,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageCarouselComponent implements OnInit {
 
-  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+  images = [null, null, null];
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getImage().subscribe(url => {
+      this.images.forEach((el, i) => {
+        this.images[i] = url;
+      });
+    });
   }
 
 }

@@ -26,6 +26,10 @@ export class DataService {
     this.fromDate = from;
   }
 
+  getImage() {
+    return this.storage.ref('global/hoarding-image.jpg').getDownloadURL();
+  }
+
   update(bookid, data) {
     return this.db.doc('bookings/' + bookid).update(data);
   }
