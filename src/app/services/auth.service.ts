@@ -186,4 +186,12 @@ export class AuthService {
   getUsers() {
     return this.afs.collection('users').valueChanges();
   }
+
+  checkAdmin(uid) {
+    return this.afs.collection('admin', ref => ref.where('uid', '==', uid)).valueChanges();
+  }
+
+  checkSuperAdmin(uid) {
+    return this.afs.collection('super-admin', ref => ref.where('uid', '==', uid)).valueChanges();
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,15 +21,42 @@ import { AuthService } from 'src/app/services/auth.service';
 export class DashboardComponent implements OnInit {
 
   user;
+  isAdmin = false;
+  isSuperAdmin = false;
 
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) { }
 
   selected;
   ngOnInit() {
-    this.auth.getAuthState().subscribe(user => this.user = user);
+    this.auth.getAuthState().subscribe(user => {
+      if (user) {
+        this.user = user;
+        this.auth.checkAdmin(user.uid).subscribe(admin => {
+          if (admin && admin[0]) {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
+        });
+        this.auth.checkSuperAdmin(user.uid).subscribe(superadmin => {
+          if (superadmin && superadmin[0]) {
+            this.isSuperAdmin = true;
+          } else {
+            this.isSuperAdmin = false;
+          }
+        });
+      } else {
+        this.redirect();
+      }
+    });
     this.changeSelected('locations');
+  }
+
+  redirect() {
+    this.router.navigateByUrl('/');
   }
 
   changeSelected(menuitem) {

@@ -64,17 +64,17 @@ export class AnalyticsComponent implements OnInit {
   }
   currencyConvert() {
     if (this.totalCost > 999 && this.totalCost < 100000) {
-      this.totalCost = (this.totalCost / 1000).toFixed(2) + 'K';
+      this.totalCost = (this.totalCost / 1000).toFixed(1) + 'K';
     }
     if (this.totalCost > 9999 && this.totalCost < 10000000) {
-      this.totalCost = (this.totalCost / 100000).toFixed(2) + 'L';
+      this.totalCost = (this.totalCost / 100000).toFixed(1) + 'L';
     }
 
     if (this.monthCost > 999 && this.monthCost < 100000) {
-      this.monthCost = (this.monthCost / 1000).toFixed(2) + 'K';
+      this.monthCost = (this.monthCost / 1000).toFixed(1) + 'K';
     }
     if (this.monthCost > 9999 && this.monthCost < 10000000) {
-      this.monthCost = (this.monthCost / 100000).toFixed(2) + 'L';
+      this.monthCost = (this.monthCost / 100000).toFixed(1) + 'L';
     }
   }
 }

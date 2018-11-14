@@ -1,4 +1,4 @@
-<div id="dashboard" class="mb-0">
+<div id="dashboard" class="mb-0" *ngIf="isAdmin || isSuperAdmin else Loading">
   <div class="container-fluid p-0 p-md-3 m-0 mx-md-3">
     <div class="row justify-content-between">
       <div class="col-12 col-md-3 bg-white p-0 p-md-3 text-center border-top border-bottom border-md-none" id="side-nav">
@@ -21,18 +21,34 @@
       </div>
       <div class="col-12 col-md-8 container-fluid px-0" id="content">
         <ng-container *ngIf="selected === 'analytics'" [@popIn]>
-          <app-analytics></app-analytics>
+          <ng-container *ngIf="isSuperAdmin else accessMsg">
+            <app-analytics></app-analytics>
+          </ng-container>
         </ng-container>
         <ng-container *ngIf="selected === 'orders'">
           <app-orders></app-orders>
         </ng-container>
         <ng-container *ngIf="selected === 'locations'">
-          <app-locations></app-locations>
+          <ng-container *ngIf="isSuperAdmin else accessMsg">
+            <app-locations></app-locations>
+          </ng-container>
         </ng-container>
         <ng-container *ngIf="selected === 'users'">
-          <app-users></app-users>
+          <ng-container *ngIf="isSuperAdmin else accessMsg">
+            <app-users></app-users>
+          </ng-container>
         </ng-container>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #Loading>
+  <app-spinner></app-spinner>
+</ng-template>
+
+<ng-template #accessMsg>
+  <div class="bg-white p-5">
+    <h3>Only a Super Admin has access to this section.</h3>
+  </div>
+</ng-template>
