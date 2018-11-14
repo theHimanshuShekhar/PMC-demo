@@ -49,8 +49,12 @@ export class DataService {
     return this.db.doc('users/' + uid).valueChanges();
   }
 
+  getUserByEmail(email) {
+    return this.db.collection('users', ref => ref.where('email', '==', email)).valueChanges();
+  }
+
   getUserBookings(uid) {
-    return this.db.collection('bookings', ref => ref.where('uid', '==', uid)).valueChanges();
+    return this.db.collection('bookings', ref => ref.where('uid', '==', uid).orderBy('date', 'desc')).valueChanges();
   }
 
   createID() {

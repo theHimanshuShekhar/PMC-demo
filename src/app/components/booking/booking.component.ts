@@ -16,7 +16,7 @@ export class BookingComponent implements OnInit {
 
   appname;
 
-
+  emailExists;
 
   currpage = 0;
 
@@ -101,11 +101,27 @@ export class BookingComponent implements OnInit {
     });
   }
 
+  checkEmail() {
+    this.dataService.getUserByEmail(this.data.email).subscribe(data => {
+      if (data && data.length >= 1) {
+        this.emailExists = true;
+      } else {
+        this.emailExists = false;
+      }
+    });
+  }
+
   navigate(type) {
     if (!this.isLoggedIn) {
       switch (type) {
         case 'next':
-          if (this.currpage < 5) {
+          if (this.currpage === 0 && !this.emailExists) {
+            this.currpage++;
+          }
+          if (this.currpage > 0 && this.currpage < 5) {
+            this.currpage++;
+          }
+          if (this.currpage === 4 && this.agreed) {
             this.currpage++;
           }
           break;
@@ -143,7 +159,6 @@ export class BookingComponent implements OnInit {
       if (this.data.appname && this.data.email && this.data.address
         && this.data.appstatus && this.data.address && this.data.medium
         && this.data.type && this.data.toDate && this.data.fromDate && this.data.image && this.data.description) {
-        this.getCost();
         this.data.location = this.location.id;
         this.data.bookingid = this.dataService.createID();
         this.dataService.submitApplication(this.data);
@@ -154,9 +169,6 @@ export class BookingComponent implements OnInit {
         this.isValid = false;
       }
     }
-  }
-  getCost() {
-    // console.log(new Date(this.data.toDate));
   }
 
   processDoc(event, filename) {
